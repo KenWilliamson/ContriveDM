@@ -1,0 +1,16 @@
+{
+    "name": "ContriveDM",
+    "version": "1.0.0",
+    "keywords": ["util", "functional", "server", "client", "browser"],
+    "author": "ken",
+    "contributors": [],
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "body-parser": "~1.13.2",
+        "express": "~4.13.1",
+        "less-middleware": "1.0.x",
+        "morgan": "~1.6.1"
+    }
+}
