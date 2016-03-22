@@ -13,5 +13,9 @@
         "less-middleware": "1.0.x",
         "morgan": "~1.6.1",
         "jade": "~1.11.0"
+    },
+    "devDependencies": {
+        "grunt-mocha-test": "^0.12.7",
+        "grunt": "~0.4.5"
     }
 }
