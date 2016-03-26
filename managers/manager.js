@@ -14,3 +14,23 @@ exports.hashPasswordSync = hashPasswordSync;
 exports.hashPassword = function (username, pw, callback) {
     crypto.pbkdf2(pw, username, 250, 128, callback);
 };
+
+exports.securityCheck = function (obj) {
+    var returnVal = true;
+    if (obj !== undefined || obj !== null) {
+        var json = JSON.stringify(obj)
+        if (json !== undefined && json !== null) {
+            var n = json.indexOf("function");
+            if (n > -1) {
+                console.log("Security Alert: " + json);
+                returnVal = false;
+            }
+        } else {
+            returnVal = false;
+        }
+    } else {
+        returnVal = false;
+    }
+
+    return returnVal;
+};
