@@ -1,6 +1,7 @@
 var assert = require('assert');
 var db = require("../../../db/db");
 var domainManager = require("../../../managers/DomainManager");
+var domainListManager = require("../../../managers/DomainListManager");
 var btoa = require('btoa')
 describe('Manager', function () {
     //do add here
@@ -29,28 +30,34 @@ describe('Manager', function () {
             req.ssl.sslCertificateKey = "someKey";
             domainManager.addDomain(req, function (result) {
                 if (result.success) {
-                    var Domain = db.getDomain();
-                    Domain.findOne({domainName: domainName}, function (err, results) {
-                        domainId = results._id;
-                        if (!err) {
-                            domainManager.getDomain(domainId, function (result) {
-                                if (result) {
-                                    domainToUpdate = result;
-                                    var req = domainToUpdate;
-                                    req.upstreamServerIp = "123.456.789.999";
-                                    req.listenPort = "8080";
-                                    req.domains = [];
-                                    req.domains.push("test.com");
-                                    req.ssl = {};
-                                    req.ssl.listenPort = 4433;
-                                    req.ssl.sslCertificate = "somelocation2";
-                                    req.ssl.sslCertificateKey = "someKey2";
-                                    domainManager.updateDomain(req, function (result) {
-                                        if (result.success) {
-                                            domainManager.deleteDomain(domainId, function (result) {
+                    domainListManager.domainList(function (domainList) {
+                        if (domainList && domainList.length > 0) {
+                            var Domain = db.getDomain();
+                            Domain.findOne({domainName: domainName}, function (err, results) {
+                                domainId = results._id;
+                                if (!err) {
+                                    domainManager.getDomain(domainId, function (result) {
+                                        if (result) {
+                                            domainToUpdate = result;
+                                            var req = domainToUpdate;
+                                            req.upstreamServerIp = "123.456.789.999";
+                                            req.listenPort = "8080";
+                                            req.domains = [];
+                                            req.domains.push("test.com");
+                                            req.ssl = {};
+                                            req.ssl.listenPort = 4433;
+                                            req.ssl.sslCertificate = "somelocation2";
+                                            req.ssl.sslCertificateKey = "someKey2";
+                                            domainManager.updateDomain(req, function (result) {
                                                 if (result.success) {
-                                                    assert(true);
-                                                    done();
+                                                    domainManager.deleteDomain(domainId, function (result) {
+                                                        if (result.success) {
+                                                            assert(true);
+                                                            done();
+                                                        } else {
+                                                            assert(false);
+                                                        }
+                                                    });
                                                 } else {
                                                     assert(false);
                                                 }
