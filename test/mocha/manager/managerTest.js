@@ -3,12 +3,14 @@ var db = require("../../../db/db");
 var domainManager = require("../../../managers/DomainManager");
 var btoa = require('btoa')
 describe('Manager', function () {
+    //do add here
+    var domainName = "test.com";
+    var domainId;
+    var domainToUpdate;
     describe('#addDomain()', function () {
-        it('should add a domain', function (done) {
-            //db.initializeMongoDb();
-            // setTimeout(function () {
+        it('should add, get, update, and delete a domain', function (done) {
             var req = {};
-            req.domainName = "test.com";
+            req.domainName = domainName;
             req.upstreamServerIp = "123.456.789.123";
             req.listenPort = "80";
             req.proxyPass = "http://appUpstream";
@@ -24,18 +26,53 @@ describe('Manager', function () {
             req.ssl = {};
             req.ssl.listenPort = 443;
             req.ssl.sslCertificate = "somelocation";
-            req.ssl.sslCertificateKey = "someKey";            
+            req.ssl.sslCertificateKey = "someKey";
             domainManager.addDomain(req, function (result) {
                 if (result.success) {
-                    assert(true);
-                    done();
+                    var Domain = db.getDomain();
+                    Domain.findOne({domainName: domainName}, function (err, results) {
+                        domainId = results._id;
+                        if (!err) {
+                            domainManager.getDomain(domainId, function (result) {
+                                if (result) {
+                                    domainToUpdate = result;
+                                    var req = domainToUpdate;
+                                    req.upstreamServerIp = "123.456.789.999";
+                                    req.listenPort = "8080";
+                                    req.domains = [];
+                                    req.domains.push("test.com");
+                                    req.ssl = {};
+                                    req.ssl.listenPort = 4433;
+                                    req.ssl.sslCertificate = "somelocation2";
+                                    req.ssl.sslCertificateKey = "someKey2";
+                                    domainManager.updateDomain(req, function (result) {
+                                        if (result.success) {
+                                            domainManager.deleteDomain(domainId, function (result) {
+                                                if (result.success) {
+                                                    assert(true);
+                                                    done();
+                                                } else {
+                                                    assert(false);
+                                                }
+                                            });
+                                        } else {
+                                            assert(false);
+                                        }
+                                    });
+                                } else {
+                                    assert(false);
+                                }
+                            });
+                        } else {
+                            assert(false);
+                        }
+                    });
                 } else {
                     assert(false);
                 }
             });
-            //}, 1000);
-
         });
     });
+
 });
 
