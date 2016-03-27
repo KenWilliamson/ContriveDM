@@ -26,14 +26,14 @@ var manager = require('../managers/manager');
 
 var nginxSchema = require('../databaseSchema/nginxSchema');
 var domainSchema = require('../databaseSchema/domainSchema');
-var proxyHeaderSchema = require('../databaseSchema/proxyHeaderSchema');
+//var proxyHeaderSchema = require('../databaseSchema/proxyHeaderSchema');
 var serverNameSchema = require('../databaseSchema/serverNameSchema');
 var sslSchema = require('../databaseSchema/sslSchema');
 var userSchema = require('../databaseSchema/userSchema');
 
 var Nginx = mongoose.model('Nginx', nginxSchema);
 var Domain = mongoose.model('Domain', domainSchema);
-var ProxyHeader = mongoose.model('ProxyHeader', proxyHeaderSchema);
+//var ProxyHeader = mongoose.model('ProxyHeader', proxyHeaderSchema);
 var ServerName = mongoose.model('ServerName', serverNameSchema);
 var Ssl = mongoose.model('Ssl', sslSchema);
 var User = mongoose.model('User', userSchema);
@@ -44,9 +44,9 @@ exports.getNginx = function () {
 exports.getDomain = function () {
     return Domain;
 };
-exports.getProxyHeader = function () {
-    return ProxyHeader;
-};
+//exports.getProxyHeader = function () {
+   // return ProxyHeader;
+//};
 exports.getServerName = function () {
     return ServerName;
 };

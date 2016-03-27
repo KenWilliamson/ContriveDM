@@ -6,7 +6,11 @@ var domainSchema = new mongoose.Schema({
     upstreamServerIp: {type: String, required: true, trim: true},    
     listenPort: {type: Number, required: true},
     proxyPass: {type: String, required: true, trim: true},
-    proxyRedirect: {type: Boolean, required: true, default: false},
+    proxyRedirect: {type: String, required: true, trim: true},
+    proxySetHeader1: {type: String, required: true, trim: true},
+    proxySetHeader2: {type: String, required: true, trim: true},
+    proxySetHeader3: {type: String, required: true, trim: true},
+    proxySetHeader4: {type: String, required: true, trim: true},
     saved: {type: Boolean, required: true, default: false}  
 });
 module.exports = domainSchema;
