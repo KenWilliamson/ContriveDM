@@ -1,5 +1,6 @@
 var manager = require("./manager");
 var db = require("../db/db");
+var nginxProcessor = require("../delegate/nginxProcessor");
 exports.addDomain = function (json, callback) {
     var returnVal = {
         success: false,
@@ -59,11 +60,13 @@ exports.addDomain = function (json, callback) {
                                                             callback(returnVal);
                                                         } else {
                                                             returnVal.success = true;
+                                                            nginxProcessor.setNginxRestart();
                                                             callback(returnVal);
                                                         }
                                                     });
                                                 } else {
                                                     returnVal.success = true;
+                                                    nginxProcessor.setNginxRestart();
                                                     callback(returnVal);
                                                 }
 
@@ -76,11 +79,13 @@ exports.addDomain = function (json, callback) {
                                                 callback(returnVal);
                                             } else {
                                                 returnVal.success = true;
+                                                nginxProcessor.setNginxRestart();
                                                 callback(returnVal);
                                             }
                                         });
                                     } else {
                                         returnVal.success = true;
+                                        nginxProcessor.setNginxRestart();
                                         callback(returnVal);
                                     }
                                 }
@@ -160,11 +165,13 @@ exports.updateDomain = function (json, callback) {
                                                                         callback(returnVal);
                                                                     } else {
                                                                         returnVal.success = true;
+                                                                        nginxProcessor.setNginxRestart();
                                                                         callback(returnVal);
                                                                     }
                                                                 });
                                                             } else {
                                                                 returnVal.success = true;
+                                                                nginxProcessor.setNginxRestart();
                                                                 callback(returnVal);
                                                             }
                                                         }
@@ -176,11 +183,13 @@ exports.updateDomain = function (json, callback) {
                                                             callback(returnVal);
                                                         } else {
                                                             returnVal.success = true;
+                                                            nginxProcessor.setNginxRestart();
                                                             callback(returnVal);
                                                         }
                                                     });
                                                 } else {
                                                     returnVal.success = true;
+                                                    nginxProcessor.setNginxRestart();
                                                     callback(returnVal);
                                                 }
                                             }
@@ -200,11 +209,13 @@ exports.updateDomain = function (json, callback) {
                                             callback(returnVal);
                                         } else {
                                             returnVal.success = true;
+                                            nginxProcessor.setNginxRestart();
                                             callback(returnVal);
                                         }
                                     });
                                 } else {
                                     returnVal.success = true;
+                                    nginxProcessor.setNginxRestart();
                                     callback(returnVal);
                                 }
                             }
@@ -286,6 +297,7 @@ exports.deleteDomain = function (id, callback) {
                                 console.error("found ssl in delete error: " + sslErr);
                             }
                             returnVal.success = true;
+                            nginxProcessor.setNginxRestart();
                             callback(returnVal);
                         });
                     } else {
