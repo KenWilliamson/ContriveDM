@@ -67,7 +67,7 @@ exports.initializeMongoDb = function () {
 initializeDefaultUsers = function () {
     User.find({}, function (err, results) {
         if (err) {
-            console.log("user Error:" + err);
+            console.error("user Error:" + err);
         } else {
             console.log("user:" + JSON.stringify(results));
             if (results.length === 0) {
@@ -81,7 +81,7 @@ initializeDefaultUsers = function () {
                 var u = new User(adminUserRecord);
                 u.save(function (err) {
                     if (err) {
-                        console.log("super admin user save error: " + err);
+                        console.error("super admin user save error: " + err);
                     } 
                 });
             }
