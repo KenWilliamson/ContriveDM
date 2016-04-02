@@ -21,14 +21,16 @@ exports.addUser = function (json, callback) {
                     firstName: json.firstName,
                     lastName: json.lastName
                 };
+               // console.log("user to add" + JSON.stringify(userRecord));
                 var u = new User(userRecord);
                 u.save(function (saveErr) {
                     if (saveErr) {
                         console.error("user save error: " + saveErr);
                     } else {
-                        returnVal = true;
-                        callback(returnVal);
+                        returnVal.success = true;                        
                     }
+                    //console.log("add user results" + JSON.stringify(returnVal));
+                    callback(returnVal);
                 });
             } else {
                 console.error("user exist Error:" + err);
@@ -54,16 +56,22 @@ exports.updateUser = function (json, callback) {
                 console.error("user find Error:" + err);
                 callback(returnVal);
             } else if (results) {
-                var hashedPw = manager.hashPasswordSync(results.username, json.password);
-                var u = results;
-                u.password = hashedPw;
-                u.firstName = json.firstName;
-                u.lastName = json.lastName;
+                 var u = results;
+                if(json.password){
+                    var hashedPw = manager.hashPasswordSync(results.username, json.password);
+                    u.password = hashedPw;
+                }
+                if(json.firstName){
+                    u.firstName = json.firstName;
+                }
+                if(json.lastName){
+                     u.lastName = json.lastName;
+                }     
                 u.save(function (saveErr) {
                     if (saveErr) {
                         console.error("user update error: " + saveErr);
                     } else {
-                        returnVal = true;
+                        returnVal.success = true;
                         callback(returnVal);
                     }
                 });
@@ -123,5 +131,23 @@ exports.deleteUser = function (id, callback) {
 };
 
 exports.userList = function (callback) {
-
+    var returnVal = [];
+    var User = db.getUser();
+    User.find({}, function (err, results) {
+        if (err) {
+            console.error("user find Error:" + err);
+            callback(returnVal);
+        } else {
+            if(results){
+                for(var cnt = 0; cnt < results.length; cnt++){
+                    var u = {};
+                    u.userName = results[cnt].username;
+                    u.firstName = results[cnt].firstName;
+                    u.lastName = results[cnt].lastName;
+                    returnVal.push(u);
+                }
+            }
+            callback(returnVal);
+        }
+    });
 };
