@@ -132,7 +132,7 @@ exports.deleteUser = function (id, callback) {
                         callback(returnVal);
                     }
                 });
-            }else{
+            } else {
                 returnVal.message = "can't delete the last user"
                 callback(returnVal);
             }
@@ -163,4 +163,33 @@ exports.userList = function (callback) {
             callback(returnVal);
         }
     });
+};
+
+exports.login = function (json, callback) {
+    var returnVal = {
+        success: false,
+        message: ""
+    };
+    var isOk = manager.securityCheck(json);
+    if (isOk) {
+        if (json.username && json.password) {
+            var User = db.getUser();
+            User.findOne({username: json.username}, function (err, results) {
+                if (err) {
+                    console.error("user Error:" + err);
+                    callback(returnVal);
+                }else{
+                    var hashedPw = manager.hashPasswordSync(json.username, json.password);
+                    if(hashedPw === results.password){
+                        returnVal.success = true;
+                    }
+                    callback(returnVal);
+                }
+            });
+        } else {
+            callback(returnVal);
+        }
+    } else {
+        callback(returnVal);
+    }
 };

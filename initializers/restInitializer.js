@@ -13,5 +13,7 @@ exports.initialize = function(app){
     app.put('/rs/user', userService.update);
     app.get('/rs/user/:id', userService.get);
     app.delete('/rs/user/:id', userService.delete);
+    
+    app.post('/rs/login', userService.login);
 };
 
