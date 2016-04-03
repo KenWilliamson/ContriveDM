@@ -7,10 +7,11 @@ exports.addDomain = function (json, callback) {
         message: ""
     };
     var isOk = manager.securityCheck(json);
+    console.log("security check: " + isOk);
     if (isOk) {
         if (json.domainName && json.domains && json.domains.length > 0) {
             var Domain = db.getDomain();
-            Domain.findOne({name: json.domainName}, function (err, results) {
+            Domain.findOne({domainName: json.domainName}, function (err, results) {
                 if (!err && (results === undefined || results === null)) {
                     console.log("found domain in create: " + JSON.stringify(results));
                     var domainJson = {};
@@ -24,6 +25,7 @@ exports.addDomain = function (json, callback) {
                     domainJson.proxySetHeader3 = "X-Forwarded-For $proxy_add_x_forwarded_for";
                     domainJson.proxySetHeader4 = "X-Forwarded-Host $server_name";
                     domainJson.saved = false;
+                    console.log("domain to create: " + JSON.stringify(domainJson));
                     var dom = new Domain(domainJson);
                     dom.save(function (saveErr) {
                         if (saveErr) {
@@ -113,15 +115,17 @@ exports.updateDomain = function (json, callback) {
     };
     var isOk = manager.securityCheck(json);
     if (isOk) {
+        console.log("json in update: " + JSON.stringify(json));
         if (json.domainName) {
             var Domain = db.getDomain();
             Domain.findById(json.id, function (err, results) {
                 if (!err && results) {
-                    console.log("found domain in create: " + JSON.stringify(results));
+                    console.log("found domain in update: " + JSON.stringify(results));
                     var dm = results;
                     dm.upstreamServerIp = json.upstreamServerIp;
                     dm.listenPort = json.listenPort;
                     dm.saved = false;
+                    console.log("found domain updated: " + JSON.stringify(dm));
                     dm.save(function (savErr) {
                         if (savErr) {
                             console.error("domain update error: " + savErr);
@@ -240,20 +244,21 @@ exports.getDomain = function (id, callback) {
         Domain.findById(id, function (err, results) {
             if (!err && results) {
                 console.log("found domain in get: " + JSON.stringify(results));
+                var d = results.toObject();
                 var ServerName = db.getServerName();
                 ServerName.find({domain: results._id}, function (srvErr, serverResults) {
                     if (!srvErr && serverResults) {
                         console.log("found server names in get: " + JSON.stringify(serverResults));
-                        results.domains = serverResults;
+                        d.domains = serverResults;
                         var Ssl = db.getSsl();
                         Ssl.findOne({domain: results._id}, function (sslErr, sslResults) {
                             if (!sslErr && sslResults) {
                                 console.log("found ssl in get: " + JSON.stringify(sslResults));
-                                results.ssl = sslResults;
+                                d.ssl = sslResults;
                             } else if (sslErr) {
                                 console.error("found ssl in get error: " + sslErr);
                             }
-                            callback(results);
+                            callback(d);
                         });
                     } else {
                         console.error("found server in get error: " + srvErr);

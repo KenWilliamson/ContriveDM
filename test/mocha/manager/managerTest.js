@@ -9,6 +9,7 @@ describe('Manager', function () {
     var domainId;
     var domainToUpdate;
     describe('#addDomain()', function () {
+
         it('should add, get, update, and delete a domain', function (done) {
             var req = {};
             req.domainName = domainName;
@@ -35,11 +36,14 @@ describe('Manager', function () {
                             var Domain = db.getDomain();
                             Domain.findOne({domainName: domainName}, function (err, results) {
                                 domainId = results._id;
-                                if (!err) {
-                                    domainManager.getDomain(domainId, function (result) {
-                                        if (result) {
-                                            domainToUpdate = result;
+                                console.log("found domain in test update: " + JSON.stringify(results));
+                                if (!err && results) {
+                                    domainManager.getDomain(domainId, function (findResult) {
+                                        console.log("found domain in test getDomain: " + JSON.stringify(findResult));
+                                        if (findResult) {
+                                            domainToUpdate = findResult;
                                             var req = domainToUpdate;
+                                            req.id = domainToUpdate._id;
                                             req.upstreamServerIp = "123.456.789.999";
                                             req.listenPort = "8080";
                                             req.domains = [];
@@ -48,8 +52,9 @@ describe('Manager', function () {
                                             req.ssl.listenPort = 4433;
                                             req.ssl.sslCertificate = "somelocation2";
                                             req.ssl.sslCertificateKey = "someKey2";
-                                            domainManager.updateDomain(req, function (result) {
-                                                if (result.success) {
+                                            domainManager.updateDomain(req, function (updateresult) {
+                                                if (updateresult.success) {
+                                                    
                                                     domainManager.deleteDomain(domainId, function (result) {
                                                         if (result.success) {
                                                             assert(true);
@@ -58,27 +63,41 @@ describe('Manager', function () {
                                                             assert(false);
                                                         }
                                                     });
+                                                    
+                                                    //assert(true);
+                                                    //done();
                                                 } else {
                                                     assert(false);
                                                 }
                                             });
+
+                                            //assert(true);
+                                            //done();
                                         } else {
                                             assert(false);
                                         }
                                     });
+                                    //assert(true);
+                                    //done();
                                 } else {
+                                    console.log("error: " + JSON.stringify(err));
                                     assert(false);
                                 }
                             });
+                            //assert(true);
+                            //done();
                         } else {
                             assert(false);
                         }
                     });
+                    //assert(true);
+                    //done();
                 } else {
                     assert(false);
                 }
             });
         });
+
     });
 
 });
