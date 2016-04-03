@@ -21,13 +21,13 @@ exports.addUser = function (json, callback) {
                     firstName: json.firstName,
                     lastName: json.lastName
                 };
-               // console.log("user to add" + JSON.stringify(userRecord));
+                // console.log("user to add" + JSON.stringify(userRecord));
                 var u = new User(userRecord);
                 u.save(function (saveErr) {
                     if (saveErr) {
                         console.error("user save error: " + saveErr);
                     } else {
-                        returnVal.success = true;                        
+                        returnVal.success = true;
                     }
                     //console.log("add user results" + JSON.stringify(returnVal));
                     callback(returnVal);
@@ -56,17 +56,17 @@ exports.updateUser = function (json, callback) {
                 console.error("user find Error:" + err);
                 callback(returnVal);
             } else if (results) {
-                 var u = results;
-                if(json.password){
+                var u = results;
+                if (json.password) {
                     var hashedPw = manager.hashPasswordSync(results.username, json.password);
                     u.password = hashedPw;
                 }
-                if(json.firstName){
+                if (json.firstName) {
                     u.firstName = json.firstName;
                 }
-                if(json.lastName){
-                     u.lastName = json.lastName;
-                }     
+                if (json.lastName) {
+                    u.lastName = json.lastName;
+                }
                 u.save(function (saveErr) {
                     if (saveErr) {
                         console.error("user update error: " + saveErr);
@@ -95,7 +95,12 @@ exports.getUser = function (id, callback) {
                 console.error("user find Error:" + err);
                 callback({});
             } else if (results) {
-                callback(results);
+                var u = {};
+                u.id = results._id;
+                u.username = results.username;
+                u.firstName = results.firstName;
+                u.lastName = results.lastName;
+                callback(u);
             } else {
                 callback({});
             }
@@ -113,15 +118,22 @@ exports.deleteUser = function (id, callback) {
     var isOk = manager.securityCheck(id);
     if (isOk) {
         var User = db.getUser();
-        User.findById(id, function (err, results) {
-            if (err) {
-                console.error("user find Error:" + err);
-                callback(returnVal);
-            } else if (results) {
-                results.remove();
-                returnVal.success = true;
-                callback(returnVal);
-            } else {
+        User.find({}, function (listErr, users) {
+            if (!listErr && users.length > 1) {
+                User.findById(id, function (err, results) {
+                    if (err) {
+                        console.error("user find Error:" + err);
+                        callback(returnVal);
+                    } else if (results) {
+                        results.remove();
+                        returnVal.success = true;
+                        callback(returnVal);
+                    } else {
+                        callback(returnVal);
+                    }
+                });
+            }else{
+                returnVal.message = "can't delete the last user"
                 callback(returnVal);
             }
         });
@@ -138,9 +150,10 @@ exports.userList = function (callback) {
             console.error("user find Error:" + err);
             callback(returnVal);
         } else {
-            if(results){
-                for(var cnt = 0; cnt < results.length; cnt++){
+            if (results) {
+                for (var cnt = 0; cnt < results.length; cnt++) {
                     var u = {};
+                    u.id = results[cnt]._id;
                     u.userName = results[cnt].username;
                     u.firstName = results[cnt].firstName;
                     u.lastName = results[cnt].lastName;
