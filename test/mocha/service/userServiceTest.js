@@ -19,6 +19,7 @@ describe('userService', function () {
             req.params.id = 1;
             var body = {};
             body.username = "aaa";
+            body.password = "aaa";
             req.body = body;
             req.is = function (val) {
                 if (val === 'application/json') {
