@@ -54,14 +54,15 @@ function filePath2moduleName(filePath) {
             replace(/^\//, '').// remove / prefix
             replace(/\.\w+$/, '');           // remove suffix
     console.log("filePath2moduleName: " + returnVal);
+    //returnVal = false;
     return returnVal;
 }
 
 
 function onlyAppFiles(filePath) {
-   // console.log("onlyAppFiles file: " + filePath);
+    console.log("onlyAppFiles file: " + filePath);
     var returnVal = /\/base\/public\/app\/(?!.*\Spec\.js$).*\.js$/.test(filePath);
-    //console.log("onlyAppFiles: " + returnVal);
+    console.log("onlyAppFiles: " + returnVal);
     return returnVal;
 }
 
