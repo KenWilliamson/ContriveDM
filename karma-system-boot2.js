@@ -60,13 +60,16 @@ function filePath2moduleName(filePath) {
 
 
 function onlyAppFiles(filePath) {
-    console.log("onlyAppFiles file: " + filePath);
+    //console.log("onlyAppFiles file: " + filePath);
     var returnVal = /\/base\/public\/app\/(?!.*\Spec\.js$).*\.js$/.test(filePath);
-    console.log("onlyAppFiles: " + returnVal);
+    //console.log("onlyAppFiles: " + returnVal);
     return returnVal;
 }
 
 
 function onlySpecFiles(path) {
-    return /Spec\.js$/.test(path);
+    console.log("onlySpecFiles path: " + path);
+    var returnVal = /Spec\.js$/.test(path);
+    console.log("onlySpecFiles: " + returnVal);
+    return returnVal;
 }
