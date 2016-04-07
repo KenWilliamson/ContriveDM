@@ -1,15 +1,23 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 module.exports = function (config) {
     config.set({
-        basePath: '../',
+        basePath: '',
         files: [
-            "test/**/*Spec.js"
+            //{pattern: 'node_modules/systemjs/dist/system-polyfills.js', watched: true, included: true},            
+            {pattern: 'node_modules/angular2/bundles/angular2-polyfills.js', watched: true, included: true},
+            {pattern: 'node_modules/systemjs/dist/system.src.js', watched: true, included: true},
+            {pattern: 'node_modules/rxjs/bundles/Rx.js', watched: true, included: true},
+            {pattern: 'node_modules/angular2/bundles/angular2.js', watched: true, included: true},
+            {pattern: 'node_modules/angular2/bundles/testing.dev.js', watched: true, included: true},
+            {pattern: 'node_modules/angular2/bundles/http.dev.js', watched: true, included: true},
+            {pattern: './karma-system-boot2.js', watched: true, included: true},
+            {pattern: 'public/app/test/**/*Spec.js', watched: true, included: false}
+            //"./karma-system-boot.js",
+            //"public/app/test/**/*Spec.js"
         ],
+        proxies: {
+            // required for component assests fetched by Angular's compiler
+            "/app/": "/base/app/"
+        },
         exclude: [
         ],
         autoWatch: true,
