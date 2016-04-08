@@ -5,6 +5,12 @@ describe('AppComponent', () => {
     //expect(app).not.toEqual(undefined)
       expect(null).not.toEqual(undefined)
   }); 
+  
+  it('is has a title', () => {
+    let app = new AppComponent();
+    //expect(app).not.toEqual(undefined)
+      expect(app.getTitle()).toEqual("ContriveDM");
+  }); 
 });
 
 

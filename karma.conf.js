@@ -9,7 +9,7 @@ module.exports = function (config) {
             {pattern: 'node_modules/angular2/bundles/angular2.js', watched: true, included: true},
             {pattern: 'node_modules/angular2/bundles/testing.dev.js', watched: true, included: true},
             {pattern: 'node_modules/angular2/bundles/http.dev.js', watched: true, included: true},
-            {pattern: './karma-system-boot2.js', watched: true, included: true},
+            {pattern: './karma-system-boot.js', watched: true, included: true},
             {pattern: 'public/app/test/**/*Spec.js', watched: true, included: false},
             {pattern: 'public/app/**/*.js', watched: true, included: false}
             
@@ -18,7 +18,7 @@ module.exports = function (config) {
         ],
         proxies: {
             // required for component assests fetched by Angular's compiler
-            "/app/": "/base/app/"
+            "/app/": "/base/public/app/"
         },
         exclude: [
         ],

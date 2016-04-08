@@ -11,6 +11,10 @@ System.register(['../app.component'], function(exports_1) {
                     var app = new app_component_1.AppComponent();
                     expect(null).not.toEqual(undefined);
                 });
+                it('is has a title', function () {
+                    var app = new app_component_1.AppComponent();
+                    expect(app.getTitle()).toEqual("ContriveDM");
+                });
             });
         }
     }

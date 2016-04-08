@@ -10,7 +10,13 @@ import {Component} from 'angular2/core';
 `
 })
 export class AppComponent {
-  title = 'ContriveDM';
+  title = 'ContriveDM';  
   
+  
+  getTitle(){
+      return this.title;
+  }
 }
+
+
 

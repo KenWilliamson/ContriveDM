@@ -20,6 +20,9 @@ System.register(['angular2/core'], function(exports_1) {
                 function AppComponent() {
                     this.title = 'ContriveDM';
                 }
+                AppComponent.prototype.getTitle = function () {
+                    return this.title;
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'contirve-app',
