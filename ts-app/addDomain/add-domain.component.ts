@@ -4,13 +4,7 @@ import {Component} from 'angular2/core';
 @Component({
   selector: 'domain-add',
   templateUrl: "../templates/add-domain.html"
-  //template: `
     
-      //<h2>{{title}} details</h2>
-         
-  //`
-  //directives: [MenuComponent]
-  
 })
 
 export class AddDomainComponent implements OnInit{

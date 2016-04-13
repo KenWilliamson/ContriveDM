@@ -6,11 +6,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 @Component({
     selector: 'contrive-app',
     templateUrl: "../templates/main.html",
-    //template: `
-    //<h1>{{title}}</h1>
-    //<a [routerLink]="['AddDomain']">add</a>
-    //<router-outlet></router-outlet>
-    //`,
+    
     directives: [
         ROUTER_DIRECTIVES,
         MenuComponent
