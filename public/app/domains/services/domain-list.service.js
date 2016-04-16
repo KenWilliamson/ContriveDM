@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Observable', 'rxjs/add/operator/do', 'rxjs/add/operator/map', 'rxjs/add/operator/catch'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', '../../business/credentials/credentials', 'rxjs/Observable', 'rxjs/add/operator/do', 'rxjs/add/operator/map', 'rxjs/add/operator/catch'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable', 'rxjs/add/
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, http_2, Observable_1;
+    var core_1, http_1, http_2, credentials_1, Observable_1;
     var DomainListService;
     return {
         setters:[
@@ -18,6 +18,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable', 'rxjs/add/
             function (http_1_1) {
                 http_1 = http_1_1;
                 http_2 = http_1_1;
+            },
+            function (credentials_1_1) {
+                credentials_1 = credentials_1_1;
             },
             function (Observable_1_1) {
                 Observable_1 = Observable_1_1;
@@ -32,8 +35,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable', 'rxjs/add/
                     this.domainUrl = './rs/domain/list';
                 }
                 DomainListService.prototype.getDomainList = function () {
+                    var creds = new credentials_1.Credentials();
                     var body = JSON.stringify("{}");
                     var headers = new http_2.Headers();
+                    headers.append('Authorization', 'Basic ' + creds.getToken());
                     var options = new http_2.RequestOptions({ headers: headers });
                     return this.http.post(this.domainUrl, body, options)
                         .do(function (res) { return console.log("Response: " + JSON.stringify(res.json())); })

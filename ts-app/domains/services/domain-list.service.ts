@@ -2,6 +2,7 @@ import {Injectable}     from 'angular2/core';
 import {Http, Response} from 'angular2/http';
 import {Headers, RequestOptions} from 'angular2/http';
 import {Domain}           from '../../domainObjects/domain';
+import {Credentials} from '../../business/credentials/credentials';
 import {Observable}     from 'rxjs/Observable';
 import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/map'
@@ -14,9 +15,10 @@ export class DomainListService {
     private domainUrl = './rs/domain/list';  // URL to web api
     //let AUTH = "";
     getDomainList() {
+        let creds = new Credentials();
         let body = JSON.stringify("{}");
         let headers = new Headers();
-        // headers.append('Authorization', 'Basic ' + AUTH);
+        headers.append('Authorization', 'Basic ' + creds.getToken());
         let options = new RequestOptions({ headers: headers });
         return this.http.post(this.domainUrl, body, options)
             .do(res => console.log("Response: " + JSON.stringify(res.json()))) // eyeball results in the console

@@ -13,6 +13,11 @@ module.exports = function (grunt) {
                 src: ['test/**/*.js']
             }
         },
+        karma: {
+            unit: {
+                configFile: 'karma.conf.js'
+            }
+        },
         ts: {
             default: {
                 src: [
@@ -33,11 +38,14 @@ module.exports = function (grunt) {
             }
         }
     });
-    
-    
+
+
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks("grunt-ts");
+    grunt.loadNpmTasks('grunt-karma');
     grunt.registerTask("angular2-compile", ["ts"]);
     grunt.registerTask('mocha-test', 'mochaTest');
+    grunt.registerTask('karma-test', 'karma');
+    grunt.registerTask('test-all', ['mochaTest', "karma"]);
 
 };

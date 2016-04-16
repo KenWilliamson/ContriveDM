@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', '../../utilities/cookies'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,26 +8,45 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, cookies_1;
     var Credentials;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (cookies_1_1) {
+                cookies_1 = cookies_1_1;
             }],
         execute: function() {
             Credentials = (function () {
                 function Credentials() {
                 }
                 Credentials.prototype.checkCreds = function () {
+                    var rtn = false;
+                    var creds = cookies_1.Cookie.getCookie("contriveDM");
+                    if (creds) {
+                        rtn = true;
+                    }
+                    return rtn;
                 };
                 Credentials.prototype.getToken = function () {
+                    var token = cookies_1.Cookie.getCookie("contriveDM");
+                    return token;
                 };
                 Credentials.prototype.setCreds = function (un, pw) {
+                    var temp = un.concat(":", pw);
+                    var token = btoa(temp);
+                    cookies_1.Cookie.setCookie("contriveDM", token);
+                    cookies_1.Cookie.setCookie("contriveUsername", un);
                 };
                 Credentials.prototype.getUsername = function () {
+                    var un = cookies_1.Cookie.getCookie("contriveUsername");
+                    return un;
                 };
                 Credentials.prototype.deleteCreds = function () {
+                    cookies_1.Cookie.deleteCookie("contriveDM");
+                    cookies_1.Cookie.deleteCookie("contriveUsername");
                 };
                 Credentials = __decorate([
                     core_1.Injectable(), 
