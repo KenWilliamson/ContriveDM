@@ -9,34 +9,34 @@ System.register(['angular2/core'], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var CredentialsComponent;
+    var Credentials;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            CredentialsComponent = (function () {
-                function CredentialsComponent() {
+            Credentials = (function () {
+                function Credentials() {
                 }
-                CredentialsComponent.prototype.checkCreds = function () {
+                Credentials.prototype.checkCreds = function () {
                 };
-                CredentialsComponent.prototype.getToken = function () {
+                Credentials.prototype.getToken = function () {
                 };
-                CredentialsComponent.prototype.setCreds = function (un, pw) {
+                Credentials.prototype.setCreds = function (un, pw) {
                 };
-                CredentialsComponent.prototype.getUsername = function () {
+                Credentials.prototype.getUsername = function () {
                 };
-                CredentialsComponent.prototype.deleteCreds = function () {
+                Credentials.prototype.deleteCreds = function () {
                 };
-                CredentialsComponent = __decorate([
+                Credentials = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])
-                ], CredentialsComponent);
-                return CredentialsComponent;
+                ], Credentials);
+                return Credentials;
             })();
-            exports_1("CredentialsComponent", CredentialsComponent);
+            exports_1("Credentials", Credentials);
         }
     }
 });
-//# sourceMappingURL=credentials.component.js.map
+//# sourceMappingURL=credentials.js.map

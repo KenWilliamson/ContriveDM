@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Observable', 'rxjs/add/operator/do', 'rxjs/add/operator/map', 'rxjs/add/operator/catch'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -21,7 +21,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
             },
             function (Observable_1_1) {
                 Observable_1 = Observable_1_1;
-            }],
+            },
+            function (_1) {},
+            function (_2) {},
+            function (_3) {}],
         execute: function() {
             DomainListService = (function () {
                 function DomainListService(http) {
@@ -33,8 +36,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     var headers = new http_2.Headers();
                     var options = new http_2.RequestOptions({ headers: headers });
                     return this.http.post(this.domainUrl, body, options)
-                        .map(function (res) { return res.json().data; })
-                        .do(function (data) { return console.log(data); })
+                        .do(function (res) { return console.log("Response: " + JSON.stringify(res.json())); })
+                        .map(function (res) { return res.json(); })
                         .catch(this.handleError);
                 };
                 DomainListService.prototype.handleError = function (error) {

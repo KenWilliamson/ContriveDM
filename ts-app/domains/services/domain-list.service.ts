@@ -3,6 +3,9 @@ import {Http, Response} from 'angular2/http';
 import {Headers, RequestOptions} from 'angular2/http';
 import {Domain}           from '../../domainObjects/domain';
 import {Observable}     from 'rxjs/Observable';
+import 'rxjs/add/operator/do'
+import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/catch'
 
 @Injectable()
 export class DomainListService {
@@ -13,11 +16,11 @@ export class DomainListService {
     getDomainList() {
         let body = JSON.stringify("{}");
         let headers = new Headers();
-       // headers.append('Authorization', 'Basic ' + AUTH);
+        // headers.append('Authorization', 'Basic ' + AUTH);
         let options = new RequestOptions({ headers: headers });
         return this.http.post(this.domainUrl, body, options)
-            .map(res => <Domain>res.json().data)
-            .do(data => console.log(data)) // eyeball results in the console
+            .do(res => console.log("Response: " + JSON.stringify(res.json()))) // eyeball results in the console
+            .map(res => <Domain>res.json())
             .catch(this.handleError)
     }
     private handleError(error: Response) {

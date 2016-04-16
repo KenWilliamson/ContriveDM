@@ -14,8 +14,10 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
     providers: [
         ROUTER_PROVIDERS
     ]
+    
 
 })
+
 @RouteConfig([
     {
         path: '/',
@@ -28,6 +30,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
         component: AddDomainComponent
     }
 ])
+
 export class AppComponent {
     title = 'ContriveDM';
 
