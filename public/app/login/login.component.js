@@ -38,6 +38,7 @@ System.register(['angular2/core', 'angular2/router', '../business/credentials/cr
                 LoginComponent.prototype.onSubmit = function () {
                     this.submitted = true;
                     console.log("submitted:" + this.submitted);
+                    console.log("password:" + this.model.password);
                 };
                 LoginComponent.prototype.getTitle = function () {
                     return this.title;

@@ -26,6 +26,7 @@ export class LoginComponent {
     onSubmit() {
         this.submitted = true;
         console.log("submitted:" + this.submitted);
+        console.log("password:" + this.model.password);
     }
     
     getTitle() {
