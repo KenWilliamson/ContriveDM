@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-static-top">
+<nav *ngIf="showMenu" class="navbar navbar-inverse navbar-static-top">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -32,5 +32,3 @@
         </div><!-- /.navbar-collapse -->
     </div>
 </nav>
-
- <router-outlet></router-outlet>

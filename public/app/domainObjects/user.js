@@ -1,14 +1,17 @@
 System.register([], function(exports_1) {
-    var user;
+    var User;
     return {
         setters:[],
         execute: function() {
-            user = (function () {
-                function user() {
+            User = (function () {
+                function User(id, username, password) {
+                    this.id = id;
+                    this.username = username;
+                    this.password = password;
                 }
-                return user;
+                return User;
             })();
-            exports_1("user", user);
+            exports_1("User", User);
         }
     }
 });

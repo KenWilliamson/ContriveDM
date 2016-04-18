@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../menu/menu.component', '../business/credentials/credentials', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', '../business/credentials/credentials', '../domainObjects/user'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,54 +8,54 @@ System.register(['angular2/core', '../menu/menu.component', '../business/credent
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, menu_component_1, credentials_1, router_1;
-    var DomainListComponent;
+    var core_1, router_1, credentials_1, user_1;
+    var LoginComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (menu_component_1_1) {
-                menu_component_1 = menu_component_1_1;
+            function (router_1_1) {
+                router_1 = router_1_1;
             },
             function (credentials_1_1) {
                 credentials_1 = credentials_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
+            function (user_1_1) {
+                user_1 = user_1_1;
             }],
         execute: function() {
-            DomainListComponent = (function () {
-                function DomainListComponent(_creds, _router) {
+            LoginComponent = (function () {
+                function LoginComponent(_creds, _router) {
                     this._creds = _creds;
                     this._router = _router;
-                    this.title = 'Domains';
+                    this.title = 'Login';
+                    this.model = new user_1.User();
+                    this.submitted = false;
+                    this.active = true;
                 }
                 ;
-                DomainListComponent.prototype.ngOnInit = function () {
-                    if (!this._creds.checkCreds()) {
-                        console.log("not logged in");
-                        this._router.navigate(['Login']);
-                    }
+                LoginComponent.prototype.onSubmit = function () {
+                    this.submitted = true;
+                    console.log("submitted:" + this.submitted);
                 };
-                DomainListComponent.prototype.getTitle = function () {
+                LoginComponent.prototype.getTitle = function () {
                     return this.title;
                 };
-                DomainListComponent = __decorate([
+                LoginComponent = __decorate([
                     core_1.Component({
-                        selector: 'domain-list',
-                        templateUrl: "../templates/domains.html",
+                        selector: 'login',
+                        templateUrl: "../templates/login.html",
                         providers: [
                             credentials_1.Credentials,
-                            menu_component_1.MenuComponent
                         ]
                     }), 
                     __metadata('design:paramtypes', [credentials_1.Credentials, router_1.Router])
-                ], DomainListComponent);
-                return DomainListComponent;
+                ], LoginComponent);
+                return LoginComponent;
             })();
-            exports_1("DomainListComponent", DomainListComponent);
+            exports_1("LoginComponent", LoginComponent);
         }
     }
 });
-//# sourceMappingURL=domain-list.component.js.map
+//# sourceMappingURL=login.component.js.map

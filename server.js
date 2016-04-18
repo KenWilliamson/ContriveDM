@@ -30,7 +30,13 @@ app.use(function (err, req, res, next) {
     res.status(500).send('Something broke!');
 });
 
-
+// this is only a temp fix for a sticky state bug in Angular 2.
+// Remove when bug is fixed-----------------------------------------------
+ app.use(function(req, res) {
+      res.status(404);
+     res.redirect('index.html');
+  });
+//------------------------------------------------------------------------
 app.listen(conf.PORT);
 
 
