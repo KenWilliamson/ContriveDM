@@ -4,6 +4,7 @@ import {MenuComponent}   from './menu/menu.component';
 import {DomainListComponent}   from './domains/domain-list.component';
 import {AddDomainComponent}   from './addDomain/add-domain.component';
 import {LoginComponent}   from './login/login.component';
+import {LogoutComponent}   from './logout/logout.component';
 import {MenuComponent}   from './menu/menu.component';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
 //import {RouteConfig} from 'angular2/router';
@@ -39,6 +40,11 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
         path: '/login',
         name: 'Login',
         component: LoginComponent
+    },
+    {
+        path: '/logout',
+        name: 'Logout',
+        component: LogoutComponent
     }
 ])
 
