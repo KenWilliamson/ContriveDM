@@ -30,17 +30,11 @@ System.register(['angular2/core', 'angular2/router', '../business/credentials/cr
                     this.addActive = "";
                 }
                 ;
-                MenuComponent.prototype.ngOnInit = function () {
-                    console.log("in menu init");
-                };
                 MenuComponent.prototype.getTitle = function () {
                     return this.title;
                 };
                 MenuComponent.prototype.setShow = function (show) {
-                    console.log("showMenu:" + this.showMenu);
-                    console.log("in setShow:" + show);
                     this.showMenu = show;
-                    console.log("showMenu:" + this.showMenu);
                 };
                 MenuComponent.prototype.getShow = function () {
                     return this.showMenu;
@@ -54,7 +48,6 @@ System.register(['angular2/core', 'angular2/router', '../business/credentials/cr
                     this.addActive = "active";
                 };
                 MenuComponent.prototype.ngAfterContentChecked = function () {
-                    console.log("in ngAfterContentChecked");
                     this.showMenu = this._creds.checkCreds();
                 };
                 __decorate([

@@ -5,52 +5,35 @@ import {Credentials} from '../business/credentials/credentials';
     selector: 'menu-main',
     templateUrl: "../../templates/menus/menu.html",
     directives: [
-        ROUTER_DIRECTIVES//,
-        //RouterOutlet
+        ROUTER_DIRECTIVES
     ],
     providers: [
-        Credentials//,
-        //ROUTER_PROVIDERS
+        Credentials
     ]
 
 })
 export class MenuComponent implements OnInit {
     title = 'menu';
     domainActive = "color: white;";
-    addActive = "";
-    //creds = new Credentials();
+    addActive = "";    
     @Input() showMenu: boolean;
     
     constructor(private _creds: Credentials) { };
-    ngOnInit() {
-        console.log("in menu init");
-    }
+    
 
     getTitle() {
         return this.title;
     }
 
     @Input()
-    setShow(show: boolean) {
-        console.log("showMenu:" + this.showMenu);
-        console.log("in setShow:" + show);
-        this.showMenu = show;
-        console.log("showMenu:" + this.showMenu);
-        //this.title = "menu_____";
+    setShow(show: boolean) {        
+        this.showMenu = show;        
     }
 
 
     getShow() {
         return this.showMenu;
-    }
-
-    //showMenu(){
-    // if(this.creds.checkCreds()){
-    //   this.showMenu = true;
-    //}else{
-    //    this.showMenu = false;
-    //}
-    //}
+    }    
 
     @Input()
     setDomainActive() {
@@ -65,12 +48,10 @@ export class MenuComponent implements OnInit {
     }
 
     ngAfterContentChecked() {
-        console.log("in ngAfterContentChecked");
+        //console.log("in ngAfterContentChecked");
         this.showMenu = this._creds.checkCreds();
     }
 
 
 }
-
-
 
