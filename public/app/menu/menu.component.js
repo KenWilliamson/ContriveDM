@@ -25,7 +25,7 @@ System.register(['angular2/core', 'angular2/router', '../business/credentials/cr
             MenuComponent = (function () {
                 function MenuComponent(_creds) {
                     this._creds = _creds;
-                    this.title = 'menu';
+                    this.title = 'Menu';
                     this.domainActive = "color: white;";
                     this.addActive = "";
                 }
@@ -57,7 +57,7 @@ System.register(['angular2/core', 'angular2/router', '../business/credentials/cr
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', Function), 
-                    __metadata('design:paramtypes', [Boolean]), 
+                    __metadata('design:paramtypes', [Object]), 
                     __metadata('design:returntype', void 0)
                 ], MenuComponent.prototype, "setShow", null);
                 __decorate([

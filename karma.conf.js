@@ -13,7 +13,7 @@ module.exports = function (config) {
             {pattern: './karma-system-boot.js', watched: true, included: true},
             {pattern: 'public/app/test/**/*Spec.js', watched: true, included: false},
             {pattern: 'public/app/**/*.js', watched: true, included: false}
-            
+
             //"./karma-system-boot.js",
             //"public/app/test/**/*Spec.js"
         ],
@@ -37,6 +37,17 @@ module.exports = function (config) {
             "karma-firefox-launcher",
             "karma-jasmine",
             "karma-ng-html2js-preprocessor"
-        ]
+        ],
+        preprocessors: {
+            // source files, that you wanna generate coverage for
+            // do not include tests or libraries
+            // (these files will be instrumented by Istanbul)
+            'public/app/test/**/*Spec.js': ['coverage']
+        },
+        reporters: ['progress', 'coverage'],
+        coverageReporter: {
+            type: 'html',
+            dir: 'coverage/'
+        }
     });
 };

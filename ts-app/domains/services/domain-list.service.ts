@@ -14,7 +14,7 @@ export class DomainListService {
 
     private domainUrl = './rs/domain/list';  // URL to web api
     //let AUTH = "";
-    getDomainList() {
+    getDomainList(): Observable<Domain[]> {
         let creds = new Credentials();
         let body = JSON.stringify("{}");
         let headers = new Headers();

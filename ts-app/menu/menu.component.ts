@@ -13,7 +13,7 @@ import {Credentials} from '../business/credentials/credentials';
 
 })
 export class MenuComponent implements OnInit {
-    title = 'menu';
+    title = 'Menu';
     domainActive = "color: white;";
     addActive = "";    
     @Input() showMenu: boolean;
@@ -26,12 +26,12 @@ export class MenuComponent implements OnInit {
     }
 
     @Input()
-    setShow(show: boolean) {        
+    setShow(show) {        
         this.showMenu = show;        
     }
 
 
-    getShow() {
+    getShow(){
         return this.showMenu;
     }    
 
