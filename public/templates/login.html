@@ -1,7 +1,7 @@
 <div class="container">    
-    <div class="form-wrapper">
-        <div class="form-label">Sign In</div>
-        <div class="form-error-label">{{errorMessage}}</div>
+    <div class="login-form-wrapper">
+        <div class="login-form-label">Sign In</div>
+        <div class="login-form-error-label">{{errorMessage}}</div>
         <form class="form-horizontal" *ngIf="active" (ngSubmit)="onSubmit()" #loginForm="ngForm">
             <div class="form-group">
                 <label for="username" class="col-sm-2 control-label">Username</label>

@@ -3,6 +3,7 @@ import {Component} from 'angular2/core';
 import {MenuComponent}   from './menu/menu.component';
 import {DomainListComponent}   from './domains/domain-list.component';
 import {AddDomainComponent}   from './addDomain/add-domain.component';
+import {EditDomainComponent}   from './editDomain/edit-domain.component';
 import {LoginComponent}   from './login/login.component';
 import {LogoutComponent}   from './logout/logout.component';
 import {MenuComponent}   from './menu/menu.component';
@@ -35,6 +36,11 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
         path: '/add',
         name: 'AddDomain',
         component: AddDomainComponent
+    },
+    {
+        path: '/editDomain/:id',
+        name: 'EditDomain',
+        component: EditDomainComponent
     },
     {
         path: '/login',

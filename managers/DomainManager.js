@@ -174,6 +174,7 @@ exports.updateDomain = function (json, callback) {
                                                                     }
                                                                 });
                                                             } else {
+                                                                deleteSsl(dm);
                                                                 returnVal.success = true;
                                                                 nginxProcessor.setNginxRestart();
                                                                 callback(returnVal);
@@ -192,6 +193,7 @@ exports.updateDomain = function (json, callback) {
                                                         }
                                                     });
                                                 } else {
+                                                    deleteSsl(dm);
                                                     returnVal.success = true;
                                                     nginxProcessor.setNginxRestart();
                                                     callback(returnVal);
@@ -218,6 +220,7 @@ exports.updateDomain = function (json, callback) {
                                         }
                                     });
                                 } else {
+                                    deleteSsl(dm);
                                     returnVal.success = true;
                                     nginxProcessor.setNginxRestart();
                                     callback(returnVal);
@@ -322,46 +325,76 @@ exports.deleteDomain = function (id, callback) {
 
 var saveSsl = function (json, dom, callback) {
     var sslJson = {};
-    sslJson.listenPort = json.ssl.listenPort;
-    sslJson.sslCertificate = json.ssl.sslCertificate;
-    sslJson.sslCertificateKey = json.ssl.sslCertificateKey;
-    sslJson.domain = dom;
-    var Ssl = db.getSsl();
-    var ssl = new Ssl(sslJson);
-    ssl.save(function (err) {
-        if (err) {
-            console.error("ssl save error: " + err);
-            callback(false);
-        } else {
-            callback(true);
-        }
-    });
+    if (json.ssl.listenPort) {
+        sslJson.listenPort = json.ssl.listenPort;
+        sslJson.sslCertificate = json.ssl.sslCertificate;
+        sslJson.sslCertificateKey = json.ssl.sslCertificateKey;
+        sslJson.domain = dom;
+        var Ssl = db.getSsl();
+        var ssl = new Ssl(sslJson);
+        ssl.save(function (err) {
+            if (err) {
+                console.error("ssl save error: " + err);
+                callback(false);
+            } else {
+                callback(true);
+            }
+        });
+    } else {
+        callback(true);
+    }
+
 };
 
 
 var updateSsl = function (json, dom, callback) {
     console.log("json passed to update ssl: " + json);
+    if (json.ssl._id) {
+        var Ssl = db.getSsl();
+        if (json.ssl.listenPort && json.ssl.sslCertificate && json.ssl.sslCertificateKey) {            
+            Ssl.findById(json.ssl._id, function (sslErr, sslResults) {
+                if (!sslErr && sslResults) {
+                    console.log("found ssl in update: " + sslResults);
+                    var ssl = sslResults;
+                    ssl.listenPort = json.ssl.listenPort;
+                    ssl.sslCertificate = json.ssl.sslCertificate;
+                    ssl.sslCertificateKey = json.ssl.sslCertificateKey;
+                    ssl.save(function (err) {
+                        if (err) {
+                            console.error("ssl update error: " + err);
+                            callback(false);
+                        } else {
+                            callback(true);
+                        }
+                    });
+                } else {
+                    console.error("ssl find in update error: " + sslErr);
+                    callback(false);
+                }
+            });
+        }else{
+            deleteSsl(dom);
+            callback(true);
+        }
+    } else if (json.ssl.listenPort && json.ssl.sslCertificate && json.ssl.sslCertificateKey) {
+        saveSsl(json, dom, callback);
+    } else {
+        callback(true);
+    }
+
+};
+
+
+var deleteSsl = function (dom) {
+    console.log("deleting ssl");
     var Ssl = db.getSsl();
     Ssl.findOne({domain: dom._id}, function (sslErr, sslResults) {
         if (!sslErr && sslResults) {
             console.log("found ssl in update: " + sslResults);
-            var ssl = sslResults;
-            ssl.listenPort = json.ssl.listenPort;
-            ssl.sslCertificate = json.ssl.sslCertificate;
-            ssl.sslCertificateKey = json.ssl.sslCertificateKey;
-            ssl.save(function (err) {
-                if (err) {
-                    console.error("ssl update error: " + err);
-                    callback(false);
-                } else {
-                    callback(true);
-                }
-            });
+            sslResults.remove();
         } else {
-            console.error("ssl find in update error: " + sslErr);
-            callback(false);
+            console.error("ssl find in delete ssl error: " + sslErr);
         }
     });
 };
-
 
