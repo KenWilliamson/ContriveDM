@@ -136,7 +136,7 @@ exports.updateDomain = function (json, callback) {
                                 ServerName.find({domain: json.id}, function (srvErr, serverResults) {
                                     if (!srvErr && serverResults) {
                                         console.log("found server names in update: " + JSON.stringify(serverResults));
-                                        for (var cnt = 0; cnt < serverResults; cnt++) {
+                                        for (var cnt = 0; cnt < serverResults.length; cnt++) {
                                             //delete the domains and start again.
                                             serverResults[cnt].remove();
                                         }
@@ -249,7 +249,7 @@ exports.getDomain = function (id, callback) {
                 console.log("found domain in get: " + JSON.stringify(results));
                 var d = results.toObject();
                 var ServerName = db.getServerName();
-                ServerName.find({domain: results._id}, function (srvErr, serverResults) {
+                ServerName.find({domain: results._id}, null, {sort: {domainName: 1}}, function (srvErr, serverResults) {
                     if (!srvErr && serverResults) {
                         console.log("found server names in get: " + JSON.stringify(serverResults));
                         d.domains = serverResults;
@@ -348,10 +348,10 @@ var saveSsl = function (json, dom, callback) {
 
 
 var updateSsl = function (json, dom, callback) {
-    console.log("json passed to update ssl: " + json);
+    console.log("json passed to update ssl: " + JSON.stringify(json));
     if (json.ssl._id) {
         var Ssl = db.getSsl();
-        if (json.ssl.listenPort && json.ssl.sslCertificate && json.ssl.sslCertificateKey) {            
+        if (json.ssl.listenPort && json.ssl.sslCertificate && json.ssl.sslCertificateKey) {
             Ssl.findById(json.ssl._id, function (sslErr, sslResults) {
                 if (!sslErr && sslResults) {
                     console.log("found ssl in update: " + sslResults);
@@ -372,14 +372,36 @@ var updateSsl = function (json, dom, callback) {
                     callback(false);
                 }
             });
-        }else{
+        } else {
             deleteSsl(dom);
             callback(true);
         }
     } else if (json.ssl.listenPort && json.ssl.sslCertificate && json.ssl.sslCertificateKey) {
-        saveSsl(json, dom, callback);
+        var Ssl = db.getSsl();
+        Ssl.findOne({domain: dom._id}, function (sslErr, sslResults) {
+            if (!sslErr && sslResults) {
+                console.log("found ssl in update: " + sslResults);
+                sslResults.listenPort = json.ssl.listenPort;
+                sslResults.sslCertificate = json.ssl.sslCertificate;
+                sslResults.sslCertificateKey = json.ssl.sslCertificateKey;
+                sslResults.save(function (err) {
+                    if (err) {
+                        console.error("ssl update error: " + err);
+                        callback(false);
+                    } else {
+                        callback(true);
+                    }
+                });
+            } else if (sslErr) {
+                console.error("ssl find in delete ssl error: " + sslErr);
+                callback(false);
+            } else {
+                saveSsl(json, dom, callback);
+            }
+        });
+
     } else {
-        callback(true);
+        callback(false);
     }
 
 };

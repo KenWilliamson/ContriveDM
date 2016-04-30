@@ -48,7 +48,8 @@ describe('Manager', function () {
                                             req.listenPort = "8080";
                                             req.domains = [];
                                             req.domains.push("test.com");
-                                            req.ssl = {};
+                                            //req.ssl = {};
+                                            //req.ssl.id = req.ssl._id;
                                             req.ssl.listenPort = 4433;
                                             req.ssl.sslCertificate = "somelocation2";
                                             req.ssl.sslCertificateKey = "someKey2";

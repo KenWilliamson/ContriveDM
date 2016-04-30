@@ -26,20 +26,20 @@
         
 
         <!-- 2. Configure SystemJS -->
-        <script>
+        <script>     
             System.config({
                 transpiler: 'typescript',
                 typescriptOptions: {emitDecoratorMetadata: true},
                 packages: {'app': {defaultExtension: 'js'}}
             });
             System.import('app/main')
-                    .then(null, console.error.bind(console));
+                    .then(null, console.error.bind(console));            
         </script>
 
 
     </head>
     <base href="/">
-    <body>
+    <body>        
         <contrive-app class="container" style="display: block">Loading .....</contrive-app>
     </body>
 </html>
