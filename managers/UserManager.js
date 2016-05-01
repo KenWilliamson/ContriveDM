@@ -175,7 +175,7 @@ exports.login = function (json, callback) {
         if (json.username && json.password) {
             var User = db.getUser();
             User.findOne({username: json.username}, function (err, results) {
-                if (err) {
+                if (err || !results) {
                     console.error("user Error:" + err);
                     callback(returnVal);
                 }else{

@@ -12,7 +12,7 @@ import {Router, ROUTER_DIRECTIVES } from 'angular2/router';
         ROUTER_DIRECTIVES
     ],
     providers: [
-        Credentials,
+        //Credentials,
         //MenuComponent,
         DomainListService
     ]

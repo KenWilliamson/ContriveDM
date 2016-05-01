@@ -4,14 +4,14 @@ import {EditDomainService}   from './services/edit-domain.service';
 import {Router, ROUTER_DIRECTIVES, RouteParams } from 'angular2/router';
 
 @Component({
-    selector: 'domain-list',
+    selector: 'edit-domain',
     templateUrl: "../templates/editDomain.html",
 
     directives: [
         ROUTER_DIRECTIVES
     ],
     providers: [
-        Credentials,
+        //Credentials,
         EditDomainService
     ]
 })

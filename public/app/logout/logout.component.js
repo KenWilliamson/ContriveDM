@@ -40,9 +40,7 @@ System.register(['angular2/core', 'angular2/router', '../business/credentials/cr
                     core_1.Component({
                         selector: 'login',
                         template: "",
-                        providers: [
-                            credentials_1.Credentials
-                        ]
+                        providers: []
                     }), 
                     __metadata('design:paramtypes', [credentials_1.Credentials, router_1.Router])
                 ], LogoutComponent);

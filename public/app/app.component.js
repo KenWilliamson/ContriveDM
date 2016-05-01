@@ -1,4 +1,4 @@
-System.register(['angular2/core', './menu/menu.component', './domains/domain-list.component', './addDomain/add-domain.component', './editDomain/edit-domain.component', './login/login.component', './logout/logout.component', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', './business/credentials/credentials', './menu/menu.component', './domains/domain-list.component', './addDomain/add-domain.component', './editDomain/edit-domain.component', './deleteDomain/delete-domain.component', './login/login.component', './logout/logout.component', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +8,15 @@ System.register(['angular2/core', './menu/menu.component', './domains/domain-lis
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, menu_component_1, domain_list_component_1, add_domain_component_1, edit_domain_component_1, login_component_1, logout_component_1, router_1;
+    var core_1, credentials_1, menu_component_1, domain_list_component_1, add_domain_component_1, edit_domain_component_1, delete_domain_component_1, login_component_1, logout_component_1, router_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (credentials_1_1) {
+                credentials_1 = credentials_1_1;
             },
             function (menu_component_1_1) {
                 menu_component_1 = menu_component_1_1;
@@ -27,6 +30,9 @@ System.register(['angular2/core', './menu/menu.component', './domains/domain-lis
             function (edit_domain_component_1_1) {
                 edit_domain_component_1 = edit_domain_component_1_1;
             },
+            function (delete_domain_component_1_1) {
+                delete_domain_component_1 = delete_domain_component_1_1;
+            },
             function (login_component_1_1) {
                 login_component_1 = login_component_1_1;
             },
@@ -38,9 +44,12 @@ System.register(['angular2/core', './menu/menu.component', './domains/domain-lis
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(_menu, _creds) {
+                    this._menu = _menu;
+                    this._creds = _creds;
                     this.title = 'ContriveDM';
                 }
+                ;
                 AppComponent.prototype.getTitle = function () {
                     return this.title;
                 };
@@ -54,6 +63,7 @@ System.register(['angular2/core', './menu/menu.component', './domains/domain-lis
                         ],
                         providers: [
                             router_1.ROUTER_PROVIDERS,
+                            credentials_1.Credentials,
                             menu_component_1.MenuComponent
                         ]
                     }),
@@ -74,6 +84,11 @@ System.register(['angular2/core', './menu/menu.component', './domains/domain-lis
                             component: edit_domain_component_1.EditDomainComponent
                         },
                         {
+                            path: '/deleteDomain/:id',
+                            name: 'DeleteDomain',
+                            component: delete_domain_component_1.DeleteDomainComponent
+                        },
+                        {
                             path: '/login',
                             name: 'Login',
                             component: login_component_1.LoginComponent
@@ -84,7 +99,7 @@ System.register(['angular2/core', './menu/menu.component', './domains/domain-lis
                             component: logout_component_1.LogoutComponent
                         }
                     ]), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [menu_component_1.MenuComponent, credentials_1.Credentials])
                 ], AppComponent);
                 return AppComponent;
             })();

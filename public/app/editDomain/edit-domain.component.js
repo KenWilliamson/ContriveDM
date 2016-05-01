@@ -110,13 +110,12 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
                 };
                 EditDomainComponent = __decorate([
                     core_1.Component({
-                        selector: 'domain-list',
+                        selector: 'edit-domain',
                         templateUrl: "../templates/editDomain.html",
                         directives: [
                             router_1.ROUTER_DIRECTIVES
                         ],
                         providers: [
-                            credentials_1.Credentials,
                             edit_domain_service_1.EditDomainService
                         ]
                     }), 

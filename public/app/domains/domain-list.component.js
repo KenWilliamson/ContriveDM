@@ -58,7 +58,6 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
                             router_1.ROUTER_DIRECTIVES
                         ],
                         providers: [
-                            credentials_1.Credentials,
                             domain_list_service_1.DomainListService
                         ]
                     }), 

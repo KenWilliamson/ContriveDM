@@ -72,7 +72,6 @@ System.register(['angular2/core', 'angular2/router', '../business/credentials/cr
                         selector: 'login',
                         templateUrl: "../templates/login.html",
                         providers: [
-                            credentials_1.Credentials,
                             login_service_1.LoginService
                         ]
                     }), 

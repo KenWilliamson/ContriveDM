@@ -10,7 +10,7 @@ import {LoginService}    from './services/login.service';
     templateUrl: "../templates/login.html",      //directives: [MenuComponent]
 
     providers: [
-        Credentials,
+        //Credentials,
         LoginService
     ]
 })

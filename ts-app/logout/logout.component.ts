@@ -8,7 +8,7 @@ import {User}    from '../domainObjects/user';
     selector: 'login',
     template: "",
     providers: [
-        Credentials
+        //Credentials
     ]
 })
 
