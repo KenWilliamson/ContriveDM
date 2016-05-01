@@ -10,20 +10,23 @@ import {LoginService}    from './services/login.service';
     templateUrl: "../templates/login.html",      //directives: [MenuComponent]
 
     providers: [
-        //Credentials,
         LoginService
     ]
 })
 
 export class LoginComponent {
     title = 'Login';
-    constructor(private _creds: Credentials, private _router: Router, private _loginService: LoginService) { };
-    
+    constructor(
+        private _creds: Credentials,
+        private _router: Router,
+        private _loginService: LoginService
+    ) { };
+
     model = new User();
 
     submitted = false;
     active = true;
-    errorMessage:string
+    errorMessage: string
 
     onSubmit() {
         this.submitted = true;
@@ -32,24 +35,24 @@ export class LoginComponent {
         let req = {};
         req.username = this.model.username;
         req.password = this.model.password;
-        
+
         this._loginService.login(req)
             .subscribe(
             res => this.successLogin(res),
             error => this.loginError(error));
     }
-    
-    successLogin(res){
+
+    successLogin(res) {
         console.log("success res: " + JSON.stringify(res));
-        if(res.success){
+        if (res.success) {
             this.errorMessage = "";
             this._creds.setCreds(this.model.username, this.model.password);
             this._router.navigate(['Domains']);
-        }else{
+        } else {
             this.errorMessage = "Login Failed";
         }
     }
-    loginError(err){
+    loginError(err) {
         console.log("error res: " + JSON.stringify(err));
     }
 

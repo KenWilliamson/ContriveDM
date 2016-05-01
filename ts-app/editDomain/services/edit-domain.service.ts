@@ -14,14 +14,10 @@ export class EditDomainService {
     constructor(private http: Http) { }
 
     private domainUrl = './rs/domain';  // URL to web api
-
-    //let AUTH = "";
+    
     getDomain(id: string): Observable<Domain> {
         let getUrl = this.domainUrl + ("/" + id);
-        let creds = new Credentials();
-        // let body = JSON.stringify("{}");
-        //let params = new URLSearchParams();
-        //params.set('id', id);
+        let creds = new Credentials();        
         let headers = new Headers();
         headers.append('Authorization', 'Basic ' + creds.getToken());
         let options = new RequestOptions({ headers: headers });
@@ -31,19 +27,10 @@ export class EditDomainService {
             .map(res => <Domain>res.json())
             .catch(this.handleError)
     }
-
-    //let AUTH = "";
-    updateDomain(json): Observable<ServiceResponse> {
-        //this.domainUrl += ("/" + id);
-        let creds = new Credentials();
-        //if (json.ssl && json.ssl.listenPort === "" &&
-            //json.ssl.sslCertificate === "" &&
-            //json.ssl.sslCertificateKey === "") {
-            //delete json.ssl;
-        //}
-        let body = JSON.stringify(json);
-        //let params = new URLSearchParams();
-        //params.set('id', id);
+    
+    updateDomain(json): Observable<ServiceResponse> {        
+        let creds = new Credentials();        
+        let body = JSON.stringify(json);        
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');  
         headers.append('Authorization', 'Basic ' + creds.getToken());

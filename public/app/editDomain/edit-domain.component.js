@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../business/credentials/credentials', './services/edit-domain.service', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', '../business/credentials/credentials', '../menu/services/menu-service', './services/edit-domain.service', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, credentials_1, edit_domain_service_1, router_1;
+    var core_1, credentials_1, menu_service_1, edit_domain_service_1, router_1;
     var EditDomainComponent;
     return {
         setters:[
@@ -18,6 +18,9 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
             function (credentials_1_1) {
                 credentials_1 = credentials_1_1;
             },
+            function (menu_service_1_1) {
+                menu_service_1 = menu_service_1_1;
+            },
             function (edit_domain_service_1_1) {
                 edit_domain_service_1 = edit_domain_service_1_1;
             },
@@ -26,11 +29,12 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
             }],
         execute: function() {
             EditDomainComponent = (function () {
-                function EditDomainComponent(_creds, _router, _editDomainService, _routeParams) {
+                function EditDomainComponent(_creds, _router, _editDomainService, _routeParams, _menuService) {
                     this._creds = _creds;
                     this._router = _router;
                     this._editDomainService = _editDomainService;
                     this._routeParams = _routeParams;
+                    this._menuService = _menuService;
                     this.title = 'Edit Domain';
                     this.submitted = false;
                     this.active = false;
@@ -43,6 +47,7 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
                         this._router.navigate(['Login']);
                     }
                     else {
+                        this._menuService.setClearMenu();
                         var id = this._routeParams.get('id');
                         this._editDomainService.getDomain(id)
                             .subscribe(function (res) { return _this.success(res); }, function (error) { return _this.error(error); });
@@ -92,7 +97,7 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
                             this.domain.domains.push(this.domain.domain2);
                         }
                         delete this.domain.domain1;
-                        delete this.domain.domain2;
+                        delete this.domain.d;
                         console.log("Res in edit-domain submit: " + JSON.stringify(this.domain));
                         this._editDomainService.updateDomain(this.domain)
                             .subscribe(function (res) { return _this.submitSuccess(res); }, function (error) { return _this.error(error); });
@@ -119,7 +124,7 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
                             edit_domain_service_1.EditDomainService
                         ]
                     }), 
-                    __metadata('design:paramtypes', [credentials_1.Credentials, router_1.Router, edit_domain_service_1.EditDomainService, router_1.RouteParams])
+                    __metadata('design:paramtypes', [credentials_1.Credentials, router_1.Router, edit_domain_service_1.EditDomainService, router_1.RouteParams, menu_service_1.MenuService])
                 ], EditDomainComponent);
                 return EditDomainComponent;
             })();

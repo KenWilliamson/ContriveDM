@@ -1,0 +1,80 @@
+<div class="container">    
+    <div class="domain-form-wrapper">
+        <div class="domain-form-label">Edit Domain</div>
+        <div class="domain-form-error-label">{{errorMessage}}</div>
+        <form class="form-horizontal" *ngIf="active" (ngSubmit)="onSubmit()" #editDomainForm="ngForm">
+            <input type="hidden"  id="id" [(ngModel)]="domain.id" #id="ngForm">
+            <div class="form-group">
+                <label for="domainName" class="col-sm-2 control-label">Domain Name</label>
+                <div class="col-sm-10">
+                    <input disabled type="text" class="form-control" id="username" 
+                           required  [(ngModel)]="domain.domainName" ngControl="domainName" #domainName="ngForm">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="upstreamServerIp" class="col-sm-2 control-label">Upstream Server IP</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="upstreamServerIp"  
+                           required [(ngModel)]="domain.upstreamServerIp" ngControl="upstreamServerIp" #upstreamServerIp="ngForm" >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listenPort" class="col-sm-2 control-label">Port</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="listenPort"  
+                           required [(ngModel)]="domain.listenPort" ngControl="listenPort" #listenPort="ngForm" >
+                </div>
+            </div>
+            <div class="domain-list-wrapper">
+                <div class="form-group">
+                    <label for="domain1" class="col-sm-2 control-label">Domain</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="domain1"  
+                               required  [(ngModel)]="domain.domain1" ngControl="domain1" #domain1="ngForm" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="domain2" class="col-sm-2 control-label">Domain</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="domain2"  
+                               [(ngModel)]="domain.domain2" ngControl="domain2" #domain2="ngForm" >
+                    </div>
+                </div>
+            </div>
+            <div class="ssl-wrapper">
+                <div class="form-group">
+                    <label for="domain.ssl.listenPort" class="col-sm-2 control-label">SSL Port</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="domain.ssl.listenPort"  
+                                 [(ngModel)]="domain.ssl.listenPort" ngControl="domain.ssl.listenPort" #domain.ssl.listenPort="ngForm" >
+                    </div>
+                </div>
+            </div>
+            <div class="ssl-wrapper">
+                <div class="form-group">
+                    <label for="domain.ssl.sslCertificate" class="col-sm-2 control-label">SSL Certificate</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="domain.ssl.sslCertificate"  
+                                 [(ngModel)]="domain.ssl.sslCertificate" ngControl="domain.ssl.sslCertificate" #domain.ssl.sslCertificate="ngForm" >
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ssl-wrapper">
+                <div class="form-group">
+                    <label for="domain.ssl.sslCertificateKey" class="col-sm-2 control-label">SSL Certificate Key</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="domain.ssl.sslCertificateKey"  
+                                 [(ngModel)]="domain.ssl.sslCertificateKey" ngControl="domain.ssl.sslCertificateKey" #domain.ssl.sslCertificateKey="ngForm" >
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Edit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

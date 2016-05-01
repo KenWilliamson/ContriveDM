@@ -8,13 +8,16 @@ import {User}    from '../domainObjects/user';
     selector: 'login',
     template: "",
     providers: [
-        //Credentials
+        
     ]
 })
 
 export class LogoutComponent implements OnInit {
     title = 'Logout';
-    constructor(private _creds: Credentials, private _router: Router) { };
+    constructor(
+        private _creds: Credentials,
+        private _router: Router
+    ) { };
 
     ngOnInit() {
         this._creds.deleteCreds();

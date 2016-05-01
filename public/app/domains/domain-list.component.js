@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../business/credentials/credentials', './services/domain-list.service', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', '../menu/services/menu-service', '../business/credentials/credentials', './services/domain-list.service', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +8,15 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, credentials_1, domain_list_service_1, router_1;
+    var core_1, menu_service_1, credentials_1, domain_list_service_1, router_1;
     var DomainListComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (menu_service_1_1) {
+                menu_service_1 = menu_service_1_1;
             },
             function (credentials_1_1) {
                 credentials_1 = credentials_1_1;
@@ -26,10 +29,11 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
             }],
         execute: function() {
             DomainListComponent = (function () {
-                function DomainListComponent(_creds, _router, _domainListService) {
+                function DomainListComponent(_creds, _router, _domainListService, _menuService) {
                     this._creds = _creds;
                     this._router = _router;
                     this._domainListService = _domainListService;
+                    this._menuService = _menuService;
                     this.title = 'Domains';
                 }
                 ;
@@ -40,6 +44,7 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
                         this._router.navigate(['Login']);
                     }
                     else {
+                        this._menuService.removeClearMenu();
                         this._domainListService.getDomainList()
                             .subscribe(function (res) { return _this.domainList = res; }, function (error) { return _this.error(error); });
                     }
@@ -61,7 +66,7 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
                             domain_list_service_1.DomainListService
                         ]
                     }), 
-                    __metadata('design:paramtypes', [credentials_1.Credentials, router_1.Router, domain_list_service_1.DomainListService])
+                    __metadata('design:paramtypes', [credentials_1.Credentials, router_1.Router, domain_list_service_1.DomainListService, menu_service_1.MenuService])
                 ], DomainListComponent);
                 return DomainListComponent;
             })();

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../business/credentials/credentials'], function(exports_1) {
+System.register(['angular2/core', './services/menu-service', 'angular2/router', '../business/credentials/credentials'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +8,15 @@ System.register(['angular2/core', 'angular2/router', '../business/credentials/cr
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, credentials_1;
+    var core_1, menu_service_1, router_1, credentials_1;
     var MenuComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (menu_service_1_1) {
+                menu_service_1 = menu_service_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
@@ -23,8 +26,9 @@ System.register(['angular2/core', 'angular2/router', '../business/credentials/cr
             }],
         execute: function() {
             MenuComponent = (function () {
-                function MenuComponent(_creds) {
+                function MenuComponent(_creds, _menuService) {
                     this._creds = _creds;
+                    this._menuService = _menuService;
                     this.title = 'Menu';
                     this.domainActive = "color: white;";
                     this.addActive = "";
@@ -42,13 +46,28 @@ System.register(['angular2/core', 'angular2/router', '../business/credentials/cr
                 MenuComponent.prototype.setDomainActive = function () {
                     this.domainActive = "color: white;";
                     this.addActive = "";
+                    this.clearMenu = false;
                 };
                 MenuComponent.prototype.setAddActive = function () {
                     this.domainActive = "";
                     this.addActive = "active";
+                    this.clearMenu = false;
+                };
+                MenuComponent.prototype.getDomainActive = function () {
+                    var rtn = "";
+                    if (!this.clearMenu) {
+                        rtn = this.domainActive;
+                    }
+                    return rtn;
                 };
                 MenuComponent.prototype.ngAfterContentChecked = function () {
                     this.showMenu = this._creds.checkCreds();
+                    if (this._menuService.isMenuClear()) {
+                        this.domainActive = "";
+                    }
+                    else if (this.addActive !== "active") {
+                        this.domainActive = "color: white;";
+                    }
                 };
                 __decorate([
                     core_1.Input(), 
@@ -79,11 +98,9 @@ System.register(['angular2/core', 'angular2/router', '../business/credentials/cr
                         directives: [
                             router_1.ROUTER_DIRECTIVES
                         ],
-                        providers: [
-                            credentials_1.Credentials
-                        ]
+                        providers: []
                     }), 
-                    __metadata('design:paramtypes', [credentials_1.Credentials])
+                    __metadata('design:paramtypes', [credentials_1.Credentials, menu_service_1.MenuService])
                 ], MenuComponent);
                 return MenuComponent;
             })();

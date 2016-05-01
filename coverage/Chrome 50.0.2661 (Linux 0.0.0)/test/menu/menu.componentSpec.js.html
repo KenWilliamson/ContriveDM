@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>25/25</span>
+        <span class='fraction'>26/26</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>11/11</span>
+        <span class='fraction'>12/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>25/25</span>
+        <span class='fraction'>26/26</span>
       </div>
     </div>
   </div>
@@ -87,7 +87,11 @@
 42
 43
 44
-45</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+45
+46
+47
+48
+49</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -102,14 +106,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -118,6 +122,10 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -131,8 +139,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">System.register(['angular2/testing', '../../menu/menu.component', '../../business/credentials/credentials'], function(exports_1) {
-    var testing_1, menu_component_1, credentials_1;
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">System.register(['angular2/testing', '../../menu/menu.component', '../../menu/services/menu-service', '../../business/credentials/credentials'], function(exports_1) {
+    var testing_1, menu_component_1, menu_service_1, credentials_1;
     return {
         setters:[
             function (testing_1_1) {
@@ -141,6 +149,9 @@
             function (menu_component_1_1) {
                 menu_component_1 = menu_component_1_1;
             },
+            function (menu_service_1_1) {
+                menu_service_1 = menu_service_1_1;
+            },
             function (credentials_1_1) {
                 credentials_1 = credentials_1_1;
             }],
@@ -148,7 +159,8 @@
             testing_1.describe('MenuComponent', function () {
                 testing_1.beforeEachProviders(function () {
                     return [
-                        credentials_1.Credentials
+                        credentials_1.Credentials,
+                        menu_service_1.MenuService
                     ];
                 });
                 testing_1.it('is not undefined', function () {
@@ -164,8 +176,8 @@
                     comp.setShow(true);
                     testing_1.expect(comp.getShow()).toEqual(true);
                 });
-                testing_1.it('should set show', testing_1.inject([credentials_1.Credentials], function (creds) {
-                    var comp = new menu_component_1.MenuComponent(creds);
+                testing_1.it('should set show', testing_1.inject([credentials_1.Credentials, menu_service_1.MenuService], function (creds, ms) {
+                    var comp = new menu_component_1.MenuComponent(creds, ms);
                     creds.setCreds("test", "test");
                     comp.ngAfterContentChecked();
                     testing_1.expect(comp.getShow()).toEqual(true);
@@ -181,7 +193,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun May 01 2016 12:57:59 GMT-0400 (EDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun May 01 2016 19:41:15 GMT-0400 (EDT)
 </div>
 </div>
 <script src="../../prettify.js"></script>
