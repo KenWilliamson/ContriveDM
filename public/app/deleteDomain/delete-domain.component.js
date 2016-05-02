@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../business/credentials/credentials', './services/delete-domain.service', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', '../business/credentials/credentials', '../menu/services/menu-service', './services/delete-domain.service', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, credentials_1, delete_domain_service_1, router_1;
+    var core_1, credentials_1, menu_service_1, delete_domain_service_1, router_1;
     var DeleteDomainComponent;
     return {
         setters:[
@@ -18,6 +18,9 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
             function (credentials_1_1) {
                 credentials_1 = credentials_1_1;
             },
+            function (menu_service_1_1) {
+                menu_service_1 = menu_service_1_1;
+            },
             function (delete_domain_service_1_1) {
                 delete_domain_service_1 = delete_domain_service_1_1;
             },
@@ -26,11 +29,12 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
             }],
         execute: function() {
             DeleteDomainComponent = (function () {
-                function DeleteDomainComponent(_creds, _router, _deleteDomainService, _routeParams) {
+                function DeleteDomainComponent(_creds, _router, _deleteDomainService, _routeParams, _menuService) {
                     this._creds = _creds;
                     this._router = _router;
                     this._deleteDomainService = _deleteDomainService;
                     this._routeParams = _routeParams;
+                    this._menuService = _menuService;
                     this.title = 'Delete Domain';
                 }
                 ;
@@ -41,6 +45,7 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
                         this._router.navigate(['Login']);
                     }
                     else {
+                        this._menuService.setClearMenu();
                         var id = this._routeParams.get('id');
                         this._deleteDomainService.getDomain(id)
                             .subscribe(function (res) { return _this.success(res); }, function (error) { return _this.error(error); });
@@ -51,12 +56,14 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
                 };
                 DeleteDomainComponent.prototype.success = function (res) {
                     this.domain = res;
-                    this.domain.id = res._id;
-                    delete this.domain._id;
-                    console.log("Res in edit-domain: " + JSON.stringify(this.domain));
+                    this.id = res._id;
+                    this.domainName = this.domain.domainName;
+                    this.ipAddress = this.domain.upstreamServerIp;
+                    this.port = this.domain.listenPort;
+                    console.log("Res in delete-domain: " + JSON.stringify(this.domain));
                 };
                 DeleteDomainComponent.prototype.error = function (err) {
-                    console.log("Edit Domain service error: " + err);
+                    console.log("Delete Domain service error: " + err);
                 };
                 DeleteDomainComponent = __decorate([
                     core_1.Component({
@@ -69,7 +76,7 @@ System.register(['angular2/core', '../business/credentials/credentials', './serv
                             delete_domain_service_1.DeleteDomainService
                         ]
                     }), 
-                    __metadata('design:paramtypes', [credentials_1.Credentials, router_1.Router, delete_domain_service_1.DeleteDomainService, router_1.RouteParams])
+                    __metadata('design:paramtypes', [credentials_1.Credentials, router_1.Router, delete_domain_service_1.DeleteDomainService, router_1.RouteParams, menu_service_1.MenuService])
                 ], DeleteDomainComponent);
                 return DeleteDomainComponent;
             })();

@@ -34,7 +34,7 @@ app.use(function (err, req, res, next) {
 // Remove when bug is fixed-----------------------------------------------
  app.use(function(req, res) {
       res.status(404);
-     res.redirect('index.html');
+     res.redirect('/index.html');
   });
 //------------------------------------------------------------------------
 app.listen(conf.PORT);
