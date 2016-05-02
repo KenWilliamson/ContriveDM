@@ -4,5 +4,13 @@
         <div class="domain-warning-text-label"><b>Domain Name:</b> {{domainName}}</div>
         <div class="domain-warning-text-label"><b>IP:</b> {{domainName}}</div>
         <div class="domain-warning-text-label"><b>Port:</b> {{port}}</div>
+        <div class="domain-delete-button-group-wrapper">
+            <div class="domain-delete-button-wrapper-l">
+                <button (click)="onDeleteClicked()">Delete!</button>
+            </div>
+            <div class="domain-delete-button-wrapper-r">
+                <button (click)="onCancelClicked()">Cancel!</button>
+            </div>
+        </div>
     </div>
 </div>

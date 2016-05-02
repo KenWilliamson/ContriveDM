@@ -65,6 +65,12 @@ System.register(['angular2/core', '../business/credentials/credentials', '../men
                 DeleteDomainComponent.prototype.error = function (err) {
                     console.log("Delete Domain service error: " + err);
                 };
+                DeleteDomainComponent.prototype.onDeleteClicked = function () {
+                    console.log("Delete Domain");
+                };
+                DeleteDomainComponent.prototype.onCancelClicked = function () {
+                    console.log("Cancel Delete");
+                };
                 DeleteDomainComponent = __decorate([
                     core_1.Component({
                         selector: 'delete-domain',

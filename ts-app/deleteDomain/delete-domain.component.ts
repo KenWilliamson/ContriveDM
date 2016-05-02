@@ -66,6 +66,15 @@ export class DeleteDomainComponent implements OnInit {
     error(err) {
         console.log("Delete Domain service error: " + err);
     }
+    
+    
+    onDeleteClicked(){
+        console.log("Delete Domain");
+    }
+    
+    onCancelClicked(){
+        console.log("Cancel Delete");
+    }
 
 
 }
