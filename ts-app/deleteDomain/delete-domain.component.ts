@@ -11,8 +11,7 @@ import {Router, ROUTER_DIRECTIVES, RouteParams } from 'angular2/router';
     directives: [
         ROUTER_DIRECTIVES
     ],
-    providers: [
-        //Credentials,
+    providers: [        
         DeleteDomainService
     ]
 })
