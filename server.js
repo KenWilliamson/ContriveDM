@@ -37,6 +37,6 @@ app.use(function (err, req, res, next) {
      res.redirect('/index.html');
   });
 //------------------------------------------------------------------------
-app.listen(conf.PORT);
+app.listen(process.env.PORT || conf.PORT);
 
 
