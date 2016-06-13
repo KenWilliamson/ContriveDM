@@ -1,30 +1,31 @@
 <div class="container">    
-    <div class="domain-form-wrapper">
-        <div class="domain-form-label">Edit Domain</div>
+    <div class="domain-form-label">Edit Domain</div>
+    <div class="domain-form-wrapper">        
         <div class="domain-form-error-label">{{errorMessage}}</div>
         <form  *ngIf="active" (ngSubmit)="onSubmit()" #editDomainForm="ngForm">
             <input type="hidden"  id="id" [(ngModel)]="domain.id" #id="ngForm">
-            <div class="form-group">
-                <label for="domainName">Domain Name</label>                
-                <input disabled type="text" class="form-control" id="username" 
-                       required  [(ngModel)]="domain.domainName" ngControl="domainName" #domainName="ngForm">
+            <div class="domain-head-wrapper">
+                <div class="form-group">
+                    <label for="domainName">Domain Name</label>                
+                    <input disabled type="text" class="form-control" id="username" 
+                           required  [(ngModel)]="domain.domainName" ngControl="domainName" #domainName="ngForm">
 
+                </div>
+                <div class="form-group">
+                    <label for="upstreamServerIp">Upstream Server IP</label>
+                    <input type="text" class="form-control" id="upstreamServerIp"  
+                           required [(ngModel)]="domain.upstreamServerIp" ngControl="upstreamServerIp" #upstreamServerIp="ngForm" >
+
+                </div>
+
+                <div class="form-group">
+                    <label for="listenPort">Port</label>
+
+                    <input type="text" class="form-control" id="listenPort"  
+                           required [(ngModel)]="domain.listenPort" ngControl="listenPort" #listenPort="ngForm" >
+
+                </div>
             </div>
-            <div class="form-group">
-                <label for="upstreamServerIp">Upstream Server IP</label>
-                <input type="text" class="form-control" id="upstreamServerIp"  
-                       required [(ngModel)]="domain.upstreamServerIp" ngControl="upstreamServerIp" #upstreamServerIp="ngForm" >
-
-            </div>
-
-            <div class="form-group">
-                <label for="listenPort">Port</label>
-
-                <input type="text" class="form-control" id="listenPort"  
-                       required [(ngModel)]="domain.listenPort" ngControl="listenPort" #listenPort="ngForm" >
-
-            </div>
-            
             <div class="domain-list-wrapper">
                 <div class="form-group">
                     <label for="domain1">Domain</label>
@@ -37,7 +38,7 @@
                            [(ngModel)]="domain.domain2" ngControl="domain2" #domain2="ngForm" >
                 </div>
             </div>
-            
+
             <div class="ssl-wrapper">
                 <div class="form-group">
                     <label for="domain.ssl.listenPort">SSL Port</label>                    
@@ -46,7 +47,7 @@
 
                 </div>
             </div>
-            
+
             <div class="ssl-wrapper">
                 <div class="form-group">
                     <label for="domain.ssl.sslCertificate">SSL Certificate</label>
@@ -68,7 +69,7 @@
             <div class="edit-domain-button">
                 <button type="submit" class="btn btn-primary">Edit</button>
             </div>
-            
+
 
         </form>
     </div>
