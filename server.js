@@ -6,11 +6,13 @@ var lessMiddleware = require('less-middleware');
 var conf = require('./configuration');
 var cors = require('./cors/cors');
 var restServiceInitializer = require('./initializers/restInitializer');
+var db = require("./db/db");
 var app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 restServiceInitializer.initialize(app);
+db.initializeMongoDb();
 
 app.use(lessMiddleware('/less', {
     dest: '/css',

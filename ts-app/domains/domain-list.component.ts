@@ -1,8 +1,8 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit} from '@angular/core';
 import {MenuService}   from '../menu/services/menu-service';
 import {Credentials} from '../business/credentials/credentials';
 import {DomainListService}   from './services/domain-list.service';
-import {Router, ROUTER_DIRECTIVES } from 'angular2/router';
+import {Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 
 @Component({
     selector: 'domain-list',

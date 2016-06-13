@@ -1,7 +1,7 @@
-import {Component} from 'angular2/core';
-import {Router } from 'angular2/router';
+import {Component} from '@angular/core';
+import {Router } from '@angular/router-deprecated';
 import {Credentials} from '../business/credentials/credentials';
-import {NgForm}    from 'angular2/common';
+import {NgForm}    from '@angular/common';
 import {User}    from '../domainObjects/user';
 
 @Component({

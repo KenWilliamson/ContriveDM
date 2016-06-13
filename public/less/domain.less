@@ -11,55 +11,83 @@
     width: 10%;
 }
 
+
 .domain-list-label{
-    text-align: center;
-    font-size: 14pt;
+    float: left;
+    text-align: center;    
     font-weight: bold;
-    padding: 0 0 1% 0;
+    width: 100%;
+    @media (min-width: 1024px) {        
+        font-size: 14pt;
+        margin: 8% 0 0 0;        
+    }
+    @media (max-width: 1024px) {
+        font-size: 14pt;
+        margin: 10% 0 0 0;
+    }
+    @media (max-width: 768px) {
+        font-size: 12pt;
+        margin: 14% 0 0 0;
+    }
+    @media (max-width: 480px) {
+        font-size: 12pt;
+        margin: 18% 0 0 0;
+    }
+
 }
 
-.domain-form-wrapper{    
-    border: @form-border;
-    @media (min-width: 768px) {
-        width: 80%;
-        margin: 5% 10% 0% 10%;
-        padding: 2% 5% 5% 5%;
+.domain-form-wrapper{   
+    float: left;    
+    @media (min-width: 1024px) {
+        width: 100%;
+        margin: 8% 0% 2% 0%;
+        padding: 0% 5% 2% 5%;   
+
+    }
+    @media (max-width: 1024px) {
+        width: 100%;
+        margin: 10% 0% 2% 0%;
+        padding: 0% 5% 0% 5%; 
 
     }
     @media (max-width: 768px) {
         width: 100%;
-        margin: 2% 0% 0% 0%;
-        padding: 2% 5% 5% 5%;
-
+        margin: 14% 0% 0% 0%;
+        padding: 0% 5% 5% 5%;        
     }
+    @media (max-width: 480px) {
+        width: 100%;
+        margin: 18% 0% 0% 0%;
+        padding: 0% 5% 5% 5%;          
+    }    
+
 };
 
-.domain-form-label{    
-
+.domain-form-label{ 
+    float: left;
+    font-weight: bold;
     @media (min-width: 768px) {
         width: 100%;
-        margin: 0% 0% 0 0%;
-        padding: 0%;
+        margin: 0% 0% 0 0%;        
         font-size: 12pt;
         text-align: center;
         padding: 0% 0% 2% 0%;
     }
     @media (max-width: 768px) {
         width: 100%;
-        margin: 0% 0% 0 0%;
-        padding: 0%;
+        margin: 0% 0% 0 0%;        
         font-size: 12pt;  
         text-align: center;
         padding: 0% 0% 2% 0%;
     }
 };
 
-.domain-form-error-label{    
+.domain-form-error-label{ 
+    float: left;
     color: @form-error-text-color;
     @media (min-width: 768px) {
         width: 100%;
-        margin: 0% 0% 0 0%;
-        padding: 0%;
+        margin: 0% 0% 0 0%;        
         font-size: 12pt;
         text-align: center;
         padding: 0% 0% 2% 0%;
@@ -67,8 +95,7 @@
     }
     @media (max-width: 768px) {
         width: 100%;
-        margin: 0% 0% 0 0%;
-        padding: 0%;
+        margin: 0% 0% 0 0%;       
         font-size: 12pt;  
         text-align: center;
         padding: 0% 0% 2% 0%;
@@ -76,17 +103,57 @@
 };
 
 .domain-list-wrapper{
-    width: 90%;
-    margin: 0% 5% 0 5%;
-    background: #f8f8f8;
+    @media (min-width: 1024px) {
+        width: 90%;
+        margin: 0% 0% 1% 5%;
+        padding: 0% 2% 1% 2%;          
+    }
+    @media (max-width: 1024px) {
+        width: 100%;
+        margin: 0% 0% 1% 0%;
+        padding: 0% 2% 1% 2%;          
+    }
+    @media (max-width: 768px) {
+        width: 100%;
+        margin: 0% 0% 1% 0%;
+        padding: 2% 5% 5% 5%;        
+    }
+    @media (max-width: 480px) {
+        width: 100%;
+        margin: 0% 0% 1% 0%;
+        padding: 2% 5% 5% 5%;          
+    }    
+    background: #b9def0;
 }
 
 .ssl-wrapper{
-    width: 80%;
-    margin: 0% 10% 0 10%;
-    background: seashell;
+    background: #c1e2b3;    
+    @media (min-width: 1024px) {
+        width: 80%;
+        margin: 0% 10% 0 10%;
+        padding: 1%;          
+    }
+    @media (max-width: 1024px) {
+        width: 100%;
+        margin: 0% 0% 1% 0%;
+        padding: 0% 2% 1% 2%;          
+    }
+    @media (max-width: 768px) {
+        width: 100%;
+        margin: 0% 0% 1% 0%;
+        padding: 2% 5% 5% 5%;        
+    }
+    @media (max-width: 480px) {
+        width: 100%;
+        margin: 0% 0% 1% 0%;
+        padding: 2% 5% 5% 5%;          
+    }    
 }
 
+.edit-domain-button{
+    text-align: center;
+    margin: 2% 0 0 0;    
+}
 
 
 .domain-warning-wrapper{    

@@ -1,4 +1,4 @@
-System.register(['angular2/testing', '../../utilities/cookies'], function(exports_1) {
+System.register(['@angular/core/testing', '../../utilities/cookies'], function(exports_1) {
     var testing_1, cookies_1;
     return {
         setters:[

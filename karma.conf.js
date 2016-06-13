@@ -3,14 +3,24 @@ module.exports = function (config) {
         basePath: '',
         files: [
             //{pattern: 'node_modules/systemjs/dist/system-polyfills.js', watched: true, included: true},            
-            {pattern: 'node_modules/angular2/bundles/angular2-polyfills.js', watched: true, included: true},
-            {pattern: 'node_modules/systemjs/dist/system.src.js', watched: true, included: true},
-            {pattern: 'node_modules/rxjs/bundles/Rx.js', watched: true, included: true},
-            {pattern: 'node_modules/angular2/bundles/angular2.js', watched: true, included: true},
-            {pattern: 'node_modules/angular2/bundles/testing.dev.js', watched: true, included: true},
-            {pattern: 'node_modules/angular2/bundles/http.dev.js', watched: true, included: true},
-            {pattern: 'node_modules/angular2/bundles/router.js', watched: true, included: true},
-            {pattern: './karma-system-boot.js', watched: true, included: true},
+
+            'node_modules/es6-shim/es6-shim.js',
+            'node_modules/reflect-metadata/Reflect.js',
+            // System.js for module loading
+            'node_modules/systemjs/dist/system-polyfills.js',
+            'node_modules/systemjs/dist/system.src.js',
+            // Zone.js dependencies
+            'node_modules/zone.js/dist/zone.js',
+            'node_modules/zone.js/dist/jasmine-patch.js',
+            'node_modules/zone.js/dist/async-test.js',
+            'node_modules/zone.js/dist/fake-async-test.js',
+            // RxJs.
+            {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false},
+            {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false},
+            {pattern: './karma-test-shims.js', watched: true, included: true},
+            {pattern: 'node_modules/@angular/**/*.js', included: false, watched: true},
+            
+            {pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: true},
             {pattern: 'public/app/test/**/*Spec.js', watched: true, included: false},
             {pattern: 'public/app/**/*.js', watched: true, included: false}
 

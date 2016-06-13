@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../business/credentials/credentials', '../domainObjects/user', './services/login.service'], function(exports_1) {
+System.register(['@angular/core', '@angular/router-deprecated', '../business/credentials/credentials', '../domainObjects/user', './services/login.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,15 +8,15 @@ System.register(['angular2/core', 'angular2/router', '../business/credentials/cr
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, credentials_1, user_1, login_service_1;
+    var core_1, router_deprecated_1, credentials_1, user_1, login_service_1;
     var LoginComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
+            function (router_deprecated_1_1) {
+                router_deprecated_1 = router_deprecated_1_1;
             },
             function (credentials_1_1) {
                 credentials_1 = credentials_1_1;
@@ -75,7 +75,7 @@ System.register(['angular2/core', 'angular2/router', '../business/credentials/cr
                             login_service_1.LoginService
                         ]
                     }), 
-                    __metadata('design:paramtypes', [credentials_1.Credentials, router_1.Router, login_service_1.LoginService])
+                    __metadata('design:paramtypes', [credentials_1.Credentials, router_deprecated_1.Router, login_service_1.LoginService])
                 ], LoginComponent);
                 return LoginComponent;
             })();

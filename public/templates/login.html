@@ -2,35 +2,26 @@
     <div class="login-form-wrapper">
         <div class="login-form-label">Sign In</div>
         <div class="login-form-error-label">{{errorMessage}}</div>
-        <form class="form-horizontal" *ngIf="active" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <form  *ngIf="active" (ngSubmit)="onSubmit()" #loginForm="ngForm">
             <div class="form-group">
-                <label for="username" class="col-sm-2 control-label">Username</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="username" placeholder="Username" 
-                           required  [(ngModel)]="model.username" ngControl="username" #username="ngForm">
-                </div>
+                <label for="username">Username</label>               
+                <input type="text" class="form-control" id="username" placeholder="Username" 
+                       required  [(ngModel)]="model.username" ngControl="username" #username="ngForm">
+
             </div>
             <div class="form-group">
-                <label for="password" class="col-sm-2 control-label">Password</label>
-                <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password" placeholder="Password" 
-                           required [(ngModel)]="model.password" ngControl="password" #password="ngForm" >
-                </div>
+                <label for="password">Password</label>
+
+                <input type="password" class="form-control" id="password" placeholder="Password" 
+                       required [(ngModel)]="model.password" ngControl="password" #password="ngForm" >
+
             </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Remember me
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Sign in</button>
-                </div>
-            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+            </div>  
+            <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
     </div>
 </div>

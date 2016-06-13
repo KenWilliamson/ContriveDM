@@ -1,4 +1,4 @@
-System.register(['angular2/testing', '../../deleteDomain/delete-domain.component'], function(exports_1) {
+System.register(['@angular/core/testing', '../../deleteDomain/delete-domain.component'], function(exports_1) {
     var testing_1, delete_domain_component_1;
     return {
         setters:[

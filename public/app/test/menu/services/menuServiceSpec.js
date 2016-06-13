@@ -1,4 +1,4 @@
-System.register(['angular2/testing', '../../../menu/services/menu-service'], function(exports_1) {
+System.register(['@angular/core/testing', '../../../menu/services/menu-service'], function(exports_1) {
     var testing_1, menu_service_1;
     return {
         setters:[

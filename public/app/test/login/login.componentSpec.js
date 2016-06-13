@@ -1,4 +1,4 @@
-System.register(['angular2/testing', '../../login/login.component'], function(exports_1) {
+System.register(['@angular/core/testing', '../../login/login.component'], function(exports_1) {
     var testing_1, login_component_1;
     return {
         setters:[

@@ -1,4 +1,4 @@
-System.register(['angular2/testing', '../../editDomain/edit-domain.component'], function(exports_1) {
+System.register(['@angular/core/testing', '../../editDomain/edit-domain.component'], function(exports_1) {
     var testing_1, edit_domain_component_1;
     return {
         setters:[

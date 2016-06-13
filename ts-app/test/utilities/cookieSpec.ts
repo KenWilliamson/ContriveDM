@@ -2,7 +2,7 @@ import {
     describe,
     expect,
     it
-} from 'angular2/testing';
+} from '@angular/core/testing';
 import {Cookie} from '../../utilities/cookies';
 describe('Cookie', () => {
     it('is not undefined', () => {

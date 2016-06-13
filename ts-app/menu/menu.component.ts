@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from 'angular2/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MenuService}   from './services/menu-service';
-import { ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
+import { ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import {Credentials} from '../business/credentials/credentials';
 @Component({
     selector: 'menu-main',

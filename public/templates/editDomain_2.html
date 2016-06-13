@@ -1,0 +1,72 @@
+<div class="container">    
+    <div class="domain-form-wrapper2">
+        <div class="domain-form-label2">Edit Domain</div>
+        <div class="domain-form-error-label2">{{errorMessage}}</div>
+        <form  *ngIf="active" (ngSubmit)="onSubmit()" #editDomainForm="ngForm">
+            <input type="hidden"  id="id" [(ngModel)]="domain.id" #id="ngForm">
+            <div class="form-group">
+                <label for="domainName">Domain Name</label>                
+                <input disabled type="text" class="form-control" id="username" 
+                       required  [(ngModel)]="domain.domainName" ngControl="domainName" #domainName="ngForm">
+
+            </div>
+            <div class="form-group">
+                <label for="upstreamServerIp">Upstream Server IP</label>
+                <input type="text" class="form-control" id="upstreamServerIp"  
+                       required [(ngModel)]="domain.upstreamServerIp" ngControl="upstreamServerIp" #upstreamServerIp="ngForm" >
+
+            </div>
+            <div class="form-group">
+                <label for="listenPort">Port</label>
+
+                <input type="text" class="form-control" id="listenPort"  
+                       required [(ngModel)]="domain.listenPort" ngControl="listenPort" #listenPort="ngForm" >
+
+            </div>
+            <div class="domain-list-wrapper2">
+                <div class="form-group">
+                    <label for="domain1">Domain</label>
+                    <input type="text" class="form-control" id="domain1"  
+                           required  [(ngModel)]="domain.domain1" ngControl="domain1" #domain1="ngForm" >
+                </div>
+                <div class="form-group">
+                    <label for="domain2" >Domain</label>
+                    <input type="text" class="form-control" id="domain2"  
+                           [(ngModel)]="domain.domain2" ngControl="domain2" #domain2="ngForm" >
+                </div>
+            </div>
+            <div class="ssl-wrapper2">
+                <div class="form-group">
+                    <label for="domain.ssl.listenPort">SSL Port</label>                    
+                    <input type="text" class="form-control" id="domain.ssl.listenPort"  
+                           [(ngModel)]="domain.ssl.listenPort" ngControl="domain.ssl.listenPort" #domain.ssl.listenPort="ngForm" >
+
+                </div>
+            </div>
+            <div class="ssl-wrapper2">
+                <div class="form-group">
+                    <label for="domain.ssl.sslCertificate">SSL Certificate</label>
+
+                    <input type="text" class="form-control" id="domain.ssl.sslCertificate"  
+                           [(ngModel)]="domain.ssl.sslCertificate" ngControl="domain.ssl.sslCertificate" #domain.ssl.sslCertificate="ngForm" >
+
+                </div>
+            </div>
+
+            <div class="ssl-wrapper2">
+                <div class="form-group">
+                    <label for="domain.ssl.sslCertificateKey">SSL Certificate Key</label>
+                    <input type="text" class="form-control" id="domain.ssl.sslCertificateKey"  
+                           [(ngModel)]="domain.ssl.sslCertificateKey" ngControl="domain.ssl.sslCertificateKey" #domain.ssl.sslCertificateKey="ngForm" >
+
+                </div>
+            </div> 
+            <div class="edit-domain-button2">
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </div>
+            
+
+
+        </form>
+    </div>
+</div>

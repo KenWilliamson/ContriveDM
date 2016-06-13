@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../business/credentials/credentials', '../menu/services/menu-service', './services/delete-domain.service', 'angular2/router'], function(exports_1) {
+System.register(['@angular/core', '../business/credentials/credentials', '../menu/services/menu-service', './services/delete-domain.service', '@angular/router-deprecated'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', '../business/credentials/credentials', '../men
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, credentials_1, menu_service_1, delete_domain_service_1, router_1;
+    var core_1, credentials_1, menu_service_1, delete_domain_service_1, router_deprecated_1;
     var DeleteDomainComponent;
     return {
         setters:[
@@ -24,8 +24,8 @@ System.register(['angular2/core', '../business/credentials/credentials', '../men
             function (delete_domain_service_1_1) {
                 delete_domain_service_1 = delete_domain_service_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
+            function (router_deprecated_1_1) {
+                router_deprecated_1 = router_deprecated_1_1;
             }],
         execute: function() {
             DeleteDomainComponent = (function () {
@@ -76,13 +76,13 @@ System.register(['angular2/core', '../business/credentials/credentials', '../men
                         selector: 'delete-domain',
                         templateUrl: "../templates/deleteDomain.html",
                         directives: [
-                            router_1.ROUTER_DIRECTIVES
+                            router_deprecated_1.ROUTER_DIRECTIVES
                         ],
                         providers: [
                             delete_domain_service_1.DeleteDomainService
                         ]
                     }), 
-                    __metadata('design:paramtypes', [credentials_1.Credentials, router_1.Router, delete_domain_service_1.DeleteDomainService, router_1.RouteParams, menu_service_1.MenuService])
+                    __metadata('design:paramtypes', [credentials_1.Credentials, router_deprecated_1.Router, delete_domain_service_1.DeleteDomainService, router_deprecated_1.RouteParams, menu_service_1.MenuService])
                 ], DeleteDomainComponent);
                 return DeleteDomainComponent;
             })();

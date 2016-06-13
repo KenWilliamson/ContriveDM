@@ -4,7 +4,7 @@ import {
     it,
     inject,
     beforeEachProviders
-} from 'angular2/testing';
+} from '@angular/core/testing';
 import {MenuComponent} from '../../menu/menu.component';
 import {MenuService} from '../../menu/services/menu-service';
 import {Credentials} from '../../business/credentials/credentials';

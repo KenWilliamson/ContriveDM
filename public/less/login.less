@@ -1,6 +1,4 @@
 .login-form-wrapper{
-    background: @form-bg-color;
-    border: @form-border;
     @media (min-width: 768px) {
         width: 60%;
         margin: 10% 15% 0 15%;
@@ -12,11 +10,11 @@
         margin: 5% 5% 0 5%;
         padding: 2% 5% 5% 5%;
         
-    }
+    }    
 };
 
 .login-form-label{    
-    
+    font-weight: bold;
     @media (min-width: 768px) {
         width: 100%;
         margin: 0% 0% 0 0%;
@@ -37,13 +35,14 @@
 
 .login-form-error-label{    
     color: @form-error-text-color;
+    background: @form-error-bg-color;    
     @media (min-width: 768px) {
         width: 100%;
         margin: 0% 0% 0 0%;
         padding: 0%;
         font-size: 12pt;
         text-align: center;
-        padding: 0% 0% 2% 0%;
+        padding: 0% 0% 0% 0%;
        
     }
     @media (max-width: 768px) {
@@ -52,6 +51,6 @@
         padding: 0%;
         font-size: 12pt;  
         text-align: center;
-        padding: 0% 0% 2% 0%;
+        padding: 0% 0% 0% 0%;
     }
 };

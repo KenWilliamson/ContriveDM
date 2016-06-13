@@ -6,12 +6,12 @@ import {
     inject,
     injectAsync,
     beforeEachProviders
-} from 'angular2/testing';
-import {provide} from 'angular2/core';
-import {MockBackend} from 'angular2/http/testing';
-import {MockConnection} from 'angular2/src/http/backends/mock_backend';
-import {Injector} from 'angular2/core';
-import {HTTP_PROVIDERS, XHRBackend, Response, ResponseOptions} from 'angular2/http';
+} from '@angular/core/testing';
+import {provide} from '@angular/core';
+import {MockBackend} from '@angular/http/testing';
+import {MockConnection} from '@angular/http/testing';
+import {Injector} from '@angular/core';
+import {HTTP_PROVIDERS, XHRBackend, Response, ResponseOptions} from '@angular/http';
 import {DeleteDomainService} from '../../../deleteDomain/services/delete-domain.service';
 describe('DeleteDomainService', () => {
 

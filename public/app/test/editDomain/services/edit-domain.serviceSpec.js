@@ -1,4 +1,4 @@
-System.register(['angular2/testing', 'angular2/core', 'angular2/http/testing', 'angular2/http', '../../../editDomain/services/edit-domain.service'], function(exports_1) {
+System.register(['@angular/core/testing', '@angular/core', '@angular/http/testing', '@angular/http', '../../../editDomain/services/edit-domain.service'], function(exports_1) {
     var testing_1, core_1, testing_2, http_1, edit_domain_service_1;
     return {
         setters:[

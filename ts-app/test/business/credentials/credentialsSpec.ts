@@ -2,7 +2,7 @@ import {
     describe,
     expect,
     it
-} from 'angular2/testing';
+} from '@angular/core/testing';
 import {Credentials} from '../../../business/credentials/credentials';
 describe('Credentials', () => {
     let creds = new Credentials();

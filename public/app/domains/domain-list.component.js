@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../menu/services/menu-service', '../business/credentials/credentials', './services/domain-list.service', 'angular2/router'], function(exports_1) {
+System.register(['@angular/core', '../menu/services/menu-service', '../business/credentials/credentials', './services/domain-list.service', '@angular/router-deprecated'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', '../menu/services/menu-service', '../business/
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, menu_service_1, credentials_1, domain_list_service_1, router_1;
+    var core_1, menu_service_1, credentials_1, domain_list_service_1, router_deprecated_1;
     var DomainListComponent;
     return {
         setters:[
@@ -24,8 +24,8 @@ System.register(['angular2/core', '../menu/services/menu-service', '../business/
             function (domain_list_service_1_1) {
                 domain_list_service_1 = domain_list_service_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
+            function (router_deprecated_1_1) {
+                router_deprecated_1 = router_deprecated_1_1;
             }],
         execute: function() {
             DomainListComponent = (function () {
@@ -60,13 +60,13 @@ System.register(['angular2/core', '../menu/services/menu-service', '../business/
                         selector: 'domain-list',
                         templateUrl: "../templates/domains.html",
                         directives: [
-                            router_1.ROUTER_DIRECTIVES
+                            router_deprecated_1.ROUTER_DIRECTIVES
                         ],
                         providers: [
                             domain_list_service_1.DomainListService
                         ]
                     }), 
-                    __metadata('design:paramtypes', [credentials_1.Credentials, router_1.Router, domain_list_service_1.DomainListService, menu_service_1.MenuService])
+                    __metadata('design:paramtypes', [credentials_1.Credentials, router_deprecated_1.Router, domain_list_service_1.DomainListService, menu_service_1.MenuService])
                 ], DomainListComponent);
                 return DomainListComponent;
             })();

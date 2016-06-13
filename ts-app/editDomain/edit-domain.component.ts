@@ -1,8 +1,8 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit} from '@angular/core';
 import {Credentials} from '../business/credentials/credentials';
 import {MenuService}   from '../menu/services/menu-service';
 import {EditDomainService}   from './services/edit-domain.service';
-import {Router, ROUTER_DIRECTIVES, RouteParams } from 'angular2/router';
+import {Router, ROUTER_DIRECTIVES, RouteParams } from '@angular/router-deprecated';
 
 @Component({
     selector: 'edit-domain',

@@ -4,7 +4,7 @@ import {
     it,
     inject,
     beforeEachProviders
-} from 'angular2/testing';
+} from '@angular/core/testing';
 import {MenuService} from '../../../menu/services/menu-service';
 
 describe('MenuService', () => {

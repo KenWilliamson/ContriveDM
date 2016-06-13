@@ -1,6 +1,6 @@
-import {Injectable}     from 'angular2/core';
-import {Http, Response} from 'angular2/http';
-import {Headers, RequestOptions, URLSearchParams} from 'angular2/http';
+import {Injectable}     from '@angular/core';
+import {Http, Response} from '@angular/http';
+import {Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import {Domain}           from '../../domainObjects/domain';
 import {ServiceResponse}           from '../../domainObjects/service-response';
 import {Credentials} from '../../business/credentials/credentials';
