@@ -69,7 +69,7 @@ System.register(['@angular/core', '../business/credentials/credentials', '../men
                     console.log("Delete Domain");
                 };
                 DeleteDomainComponent.prototype.onCancelClicked = function () {
-                    console.log("Cancel Delete");
+                    this._router.navigate(['Domains']);
                 };
                 DeleteDomainComponent = __decorate([
                     core_1.Component({

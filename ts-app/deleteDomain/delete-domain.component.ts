@@ -72,8 +72,8 @@ export class DeleteDomainComponent implements OnInit {
         console.log("Delete Domain");
     }
     
-    onCancelClicked(){
-        console.log("Cancel Delete");
+    onCancelClicked(){        
+        this._router.navigate(['Domains']);
     }
 
 
