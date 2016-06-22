@@ -376,7 +376,7 @@ var updateSsl = function (json, dom, callback) {
             deleteSsl(dom);
             callback(true);
         }
-    } else if (json.ssl.listenPort && json.ssl.sslCertificate && json.ssl.sslCertificateKey) {
+    } else if (json.ssl.listenPort && json.ssl.listenPort !== "" && json.ssl.sslCertificate && json.ssl.sslCertificate !== "" && json.ssl.sslCertificateKey && json.ssl.sslCertificateKey !== "") {
         var Ssl = db.getSsl();
         Ssl.findOne({domain: dom._id}, function (sslErr, sslResults) {
             if (!sslErr && sslResults) {
@@ -401,7 +401,7 @@ var updateSsl = function (json, dom, callback) {
         });
 
     } else {
-        callback(false);
+        callback(true);
     }
 
 };

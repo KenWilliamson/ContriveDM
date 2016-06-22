@@ -63,17 +63,29 @@ export class DeleteDomainComponent implements OnInit {
         this.port = this.domain.listenPort;
         console.log("Res in delete-domain: " + JSON.stringify(this.domain));
     }
-    error(err) {
-        console.log("Delete Domain service error: " + err);
-    }
+    
     
     
     onDeleteClicked(){
         console.log("Delete Domain");
+        this._deleteDomainService.deleteDomain(this.id)
+                .subscribe(
+                res => this.deleteSuccess(res),
+                error => this.error(error));
     }
     
     onCancelClicked(){        
         this._router.navigate(['Domains']);
+    }
+    
+    deleteSuccess(res){
+        if(res.success){
+            this._router.navigate(['Domains']);
+        }
+    }
+    
+    error(err) {
+        console.log("Delete Domain service error: " + err);
     }
 
 

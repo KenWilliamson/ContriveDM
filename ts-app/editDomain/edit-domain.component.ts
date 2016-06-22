@@ -94,7 +94,10 @@ export class EditDomainComponent implements OnInit {
                 this.domain.domains.push(this.domain.domain2)
             }
             delete this.domain.domain1;
-            delete this.domain.d                    //let model = this.domain;
+            delete this.domain.domain2;                    
+            //if(this.domain.ssl.listenPort === ""){
+                //delete this.domain.ssl;
+            //}
 
             console.log("Res in edit-domain submit: " + JSON.stringify(this.domain));
             this._editDomainService.updateDomain(this.domain)

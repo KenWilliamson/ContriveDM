@@ -62,14 +62,22 @@ System.register(['@angular/core', '../business/credentials/credentials', '../men
                     this.port = this.domain.listenPort;
                     console.log("Res in delete-domain: " + JSON.stringify(this.domain));
                 };
-                DeleteDomainComponent.prototype.error = function (err) {
-                    console.log("Delete Domain service error: " + err);
-                };
                 DeleteDomainComponent.prototype.onDeleteClicked = function () {
+                    var _this = this;
                     console.log("Delete Domain");
+                    this._deleteDomainService.deleteDomain(this.id)
+                        .subscribe(function (res) { return _this.deleteSuccess(res); }, function (error) { return _this.error(error); });
                 };
                 DeleteDomainComponent.prototype.onCancelClicked = function () {
                     this._router.navigate(['Domains']);
+                };
+                DeleteDomainComponent.prototype.deleteSuccess = function (res) {
+                    if (res.success) {
+                        this._router.navigate(['Domains']);
+                    }
+                };
+                DeleteDomainComponent.prototype.error = function (err) {
+                    console.log("Delete Domain service error: " + err);
                 };
                 DeleteDomainComponent = __decorate([
                     core_1.Component({

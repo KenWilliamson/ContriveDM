@@ -97,7 +97,7 @@ System.register(['@angular/core', '../business/credentials/credentials', '../men
                             this.domain.domains.push(this.domain.domain2);
                         }
                         delete this.domain.domain1;
-                        delete this.domain.d;
+                        delete this.domain.domain2;
                         console.log("Res in edit-domain submit: " + JSON.stringify(this.domain));
                         this._editDomainService.updateDomain(this.domain)
                             .subscribe(function (res) { return _this.submitSuccess(res); }, function (error) { return _this.error(error); });
