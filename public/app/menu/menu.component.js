@@ -32,6 +32,7 @@ System.register(['@angular/core', './services/menu-service', '@angular/router-de
                     this.title = 'Menu';
                     this.domainActive = "color: white;";
                     this.addActive = "";
+                    this.usersActive = "";
                 }
                 ;
                 MenuComponent.prototype.getTitle = function () {
@@ -51,6 +52,12 @@ System.register(['@angular/core', './services/menu-service', '@angular/router-de
                 MenuComponent.prototype.setAddActive = function () {
                     this.domainActive = "";
                     this.addActive = "active";
+                    this.clearMenu = false;
+                };
+                MenuComponent.prototype.setUsersActive = function () {
+                    this.domainActive = "";
+                    this.addActive = "";
+                    this.usersActive = "active";
                     this.clearMenu = false;
                 };
                 MenuComponent.prototype.getDomainActive = function () {
@@ -91,6 +98,12 @@ System.register(['@angular/core', './services/menu-service', '@angular/router-de
                     __metadata('design:paramtypes', []), 
                     __metadata('design:returntype', void 0)
                 ], MenuComponent.prototype, "setAddActive", null);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Function), 
+                    __metadata('design:paramtypes', []), 
+                    __metadata('design:returntype', void 0)
+                ], MenuComponent.prototype, "setUsersActive", null);
                 MenuComponent = __decorate([
                     core_1.Component({
                         selector: 'menu-main',

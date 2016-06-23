@@ -3,6 +3,7 @@ import {Credentials} from './business/credentials/credentials';
 import {MenuComponent}   from './menu/menu.component';
 import {MenuService}   from './menu/services/menu-service';
 import {DomainListComponent}   from './domains/domain-list.component';
+import {UserListComponent}   from './users/user-list.component';
 import {AddDomainComponent}   from './addDomain/add-domain.component';
 import {EditDomainComponent}   from './editDomain/edit-domain.component';
 import {DeleteDomainComponent}   from './deleteDomain/delete-domain.component';
@@ -49,6 +50,21 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-
         name: 'DeleteDomain',
         component: DeleteDomainComponent
     },
+    {
+        path: '/users',
+        name: 'Users',
+        component: UserListComponent
+    },
+   // {
+     //   path: '/adduser',
+       // name: 'AddUser',
+       // component: AddUserComponent
+    //},
+    //{
+      //  path: '/editUser/:id',
+        //name: 'EditUser',
+       // component: EditUserComponent
+    //}
     {
         path: '/login',
         name: 'Login',

@@ -9,7 +9,7 @@ import {Credentials} from '../business/credentials/credentials';
         ROUTER_DIRECTIVES
     ],
     providers: [
-        
+
     ]
 })
 
@@ -17,7 +17,8 @@ export class MenuComponent implements OnInit {
     title = 'Menu';
     domainActive = "color: white;";
     addActive = "";
-    @Input() showMenu: boolean;    
+    usersActive = "";
+    @Input() showMenu: boolean;
 
     constructor(
         private _creds: Credentials,
@@ -53,7 +54,15 @@ export class MenuComponent implements OnInit {
         this.clearMenu = false;
     }
 
-   
+    @Input()
+    setUsersActive() {
+        this.domainActive = "";
+        this.addActive = "";
+        this.usersActive = "active";
+        this.clearMenu = false;
+    }
+
+
     getDomainActive() {
         var rtn = "";
         if (!this.clearMenu) {
@@ -62,13 +71,13 @@ export class MenuComponent implements OnInit {
         return rtn
     }
 
-    ngAfterContentChecked() {        
+    ngAfterContentChecked() {
         this.showMenu = this._creds.checkCreds();
-        if(this._menuService.isMenuClear()){
+        if (this._menuService.isMenuClear()) {
             this.domainActive = "";
-        }else if(this.addActive !== "active"){
+        } else if (this.addActive !== "active") {
             this.domainActive = "color: white;";
-        }        
+        }
     }
 }
 
