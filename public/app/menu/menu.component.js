@@ -47,11 +47,13 @@ System.register(['@angular/core', './services/menu-service', '@angular/router-de
                 MenuComponent.prototype.setDomainActive = function () {
                     this.domainActive = "color: white;";
                     this.addActive = "";
+                    this.usersActive = "";
                     this.clearMenu = false;
                 };
                 MenuComponent.prototype.setAddActive = function () {
                     this.domainActive = "";
                     this.addActive = "active";
+                    this.usersActive = "";
                     this.clearMenu = false;
                 };
                 MenuComponent.prototype.setUsersActive = function () {
@@ -72,7 +74,7 @@ System.register(['@angular/core', './services/menu-service', '@angular/router-de
                     if (this._menuService.isMenuClear()) {
                         this.domainActive = "";
                     }
-                    else if (this.addActive !== "active") {
+                    else if (this.addActive !== "active" && this.usersActive !== "active") {
                         this.domainActive = "color: white;";
                     }
                 };

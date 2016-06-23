@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="{{addActive}}"><a (click)="setAddActive()" [routerLink]="['AddDomain']" >Add</a></li>                
-                <li class="dropdown">
+                <li class="dropdown  {{usersActive}}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a (click)="setUsersActive()" [routerLink]="['Users']">View</a></li>

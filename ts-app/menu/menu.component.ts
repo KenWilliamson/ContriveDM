@@ -44,6 +44,7 @@ export class MenuComponent implements OnInit {
     setDomainActive() {
         this.domainActive = "color: white;";
         this.addActive = "";
+        this.usersActive = "";
         this.clearMenu = false;
     }
 
@@ -51,6 +52,7 @@ export class MenuComponent implements OnInit {
     setAddActive() {
         this.domainActive = "";
         this.addActive = "active";
+        this.usersActive = "";
         this.clearMenu = false;
     }
 
@@ -75,7 +77,7 @@ export class MenuComponent implements OnInit {
         this.showMenu = this._creds.checkCreds();
         if (this._menuService.isMenuClear()) {
             this.domainActive = "";
-        } else if (this.addActive !== "active") {
+        } else if (this.addActive !== "active" && this.usersActive !== "active") {
             this.domainActive = "color: white;";
         }
     }
