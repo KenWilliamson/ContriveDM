@@ -30,7 +30,7 @@ System.register(['@angular/core', './services/menu-service', '@angular/router-de
                     this._creds = _creds;
                     this._menuService = _menuService;
                     this.title = 'Menu';
-                    this.domainActive = "color: white;";
+                    this.domainActive = true;
                     this.addActive = "";
                     this.usersActive = "";
                 }
@@ -45,25 +45,25 @@ System.register(['@angular/core', './services/menu-service', '@angular/router-de
                     return this.showMenu;
                 };
                 MenuComponent.prototype.setDomainActive = function () {
-                    this.domainActive = "color: white;";
+                    this.domainActive = true;
                     this.addActive = "";
                     this.usersActive = "";
                     this.clearMenu = false;
                 };
                 MenuComponent.prototype.setAddActive = function () {
-                    this.domainActive = "";
+                    this.domainActive = false;
                     this.addActive = "active";
                     this.usersActive = "";
                     this.clearMenu = false;
                 };
                 MenuComponent.prototype.setUsersActive = function () {
-                    this.domainActive = "";
+                    this.domainActive = false;
                     this.addActive = "";
                     this.usersActive = "active";
                     this.clearMenu = false;
                 };
                 MenuComponent.prototype.getDomainActive = function () {
-                    var rtn = "";
+                    var rtn = false;
                     if (!this.clearMenu) {
                         rtn = this.domainActive;
                     }
@@ -72,10 +72,10 @@ System.register(['@angular/core', './services/menu-service', '@angular/router-de
                 MenuComponent.prototype.ngAfterContentChecked = function () {
                     this.showMenu = this._creds.checkCreds();
                     if (this._menuService.isMenuClear()) {
-                        this.domainActive = "";
+                        this.domainActive = false;
                     }
                     else if (this.addActive !== "active" && this.usersActive !== "active") {
-                        this.domainActive = "color: white;";
+                        this.domainActive = true;
                     }
                 };
                 __decorate([

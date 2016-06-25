@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit } from '@angular/core';
 import {MenuService}   from './services/menu-service';
 import { ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import {Credentials} from '../business/credentials/credentials';
@@ -15,16 +15,20 @@ import {Credentials} from '../business/credentials/credentials';
 
 export class MenuComponent implements OnInit {
     title = 'Menu';
-    domainActive = "color: white;";
+    domainActive = true;
     addActive = "";
     usersActive = "";
     @Input() showMenu: boolean;
 
     constructor(
         private _creds: Credentials,
-        private _menuService: MenuService
+        private _menuService: MenuService//,
+        //private _cd: ChangeDetectorRef
     ) { };
 
+   // ngOnInit() {
+        //this._cd.markForCheck();
+    //}
 
     getTitle() {
         return this.title;
@@ -42,7 +46,7 @@ export class MenuComponent implements OnInit {
 
     @Input()
     setDomainActive() {
-        this.domainActive = "color: white;";
+        this.domainActive = true;
         this.addActive = "";
         this.usersActive = "";
         this.clearMenu = false;
@@ -50,7 +54,7 @@ export class MenuComponent implements OnInit {
 
     @Input()
     setAddActive() {
-        this.domainActive = "";
+        this.domainActive = false;
         this.addActive = "active";
         this.usersActive = "";
         this.clearMenu = false;
@@ -58,7 +62,7 @@ export class MenuComponent implements OnInit {
 
     @Input()
     setUsersActive() {
-        this.domainActive = "";
+        this.domainActive = false;
         this.addActive = "";
         this.usersActive = "active";
         this.clearMenu = false;
@@ -66,20 +70,22 @@ export class MenuComponent implements OnInit {
 
 
     getDomainActive() {
-        var rtn = "";
+        var rtn = false;
         if (!this.clearMenu) {
             rtn = this.domainActive;
         }
         return rtn
     }
-
+    
     ngAfterContentChecked() {
         this.showMenu = this._creds.checkCreds();
         if (this._menuService.isMenuClear()) {
-            this.domainActive = "";
+            this.domainActive = false;
         } else if (this.addActive !== "active" && this.usersActive !== "active") {
-            this.domainActive = "color: white;";
+            this.domainActive = true;
         }
+        //this._cd.detectChanges();
     }
+    
 }
 
