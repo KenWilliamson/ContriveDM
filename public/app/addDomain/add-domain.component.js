@@ -97,7 +97,7 @@ System.register(['@angular/core', '../business/credentials/credentials', '../men
                 AddDomainComponent = __decorate([
                     core_1.Component({
                         selector: 'domain-add',
-                        templateUrl: "../templates/add-domain.html",
+                        templateUrl: "../templates/addDomain.html",
                         directives: [
                             router_deprecated_1.ROUTER_DIRECTIVES
                         ],

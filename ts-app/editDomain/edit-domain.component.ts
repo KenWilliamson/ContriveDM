@@ -95,10 +95,7 @@ export class EditDomainComponent implements OnInit {
             }
             delete this.domain.domain1;
             delete this.domain.domain2;                    
-            //if(this.domain.ssl.listenPort === ""){
-                //delete this.domain.ssl;
-            //}
-
+            
             console.log("Res in edit-domain submit: " + JSON.stringify(this.domain));
             this._editDomainService.updateDomain(this.domain)
                 .subscribe(

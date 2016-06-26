@@ -32,8 +32,7 @@ export class DomainListComponent implements OnInit {
         if (!this._creds.checkCreds()) {
             console.log("not logged in");
             this._router.navigate(['Login']);
-        } else {
-            //console.log("logged in");
+        } else {           
             this._menuService.removeClearMenu();
             this._domainListService.getDomainList()
                 .subscribe(

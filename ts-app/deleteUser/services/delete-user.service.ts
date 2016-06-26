@@ -10,12 +10,12 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
 
 @Injectable()
-export class EditUserService {
+export class DeleteUserService {
     constructor(private http: Http) { }
 
-    private userUrl = './rs/user';  
-    
-    getUser(id: string): Observable<Domain> {
+    private userUrl = './rs/user';  // URL to web api
+   
+    getUser(id: string): Observable<User> {
         let getUrl = this.userUrl + ("/" + id);
         let creds = new Credentials();        
         let headers = new Headers();
@@ -27,16 +27,16 @@ export class EditUserService {
             .map(res => <User>res.json())
             .catch(this.handleError)
     }
+
     
-    updateUser(json): Observable<ServiceResponse> {        
+    deleteUser(id: string): Observable<ServiceResponse> {
+        let deleteUrl = this.userUrl + ("/" + id);
         let creds = new Credentials();        
-        let body = JSON.stringify(json);        
         let headers = new Headers();
-        headers.append('Content-Type', 'application/json');  
         headers.append('Authorization', 'Basic ' + creds.getToken());
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(this.userUrl, body, options)
+        return this.http.delete(deleteUrl, options)
             .do(res => console.log("Response: " + JSON.stringify(res.json()))) // eyeball results in the console
             .map(res => <ServiceResponse>res.json())
             .catch(this.handleError)

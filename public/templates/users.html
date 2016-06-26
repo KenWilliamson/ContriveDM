@@ -10,7 +10,7 @@
         <td class="domain-table-col1"><a [routerLink]="['EditUser', {id: user._id}]" >{{user.username}}</a></td>
         <td class="domain-table-col2">{{user.firstName}}</td>
         <td class="domain-table-col3">{{user.lastName}}</td>
-        <td class="domain-table-col4"><a [routerLink]="['DeleteDomain', {id: user._id}]" ><span class="glyphicon glyphicon-remove-circle"></span></a></td>
+        <td class="domain-table-col4"><a [routerLink]="['DeleteUser', {id: user._id}]" ><span class="glyphicon glyphicon-remove-circle"></span></a></td>
     </tr>
 </table>
 

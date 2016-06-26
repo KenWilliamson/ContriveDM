@@ -12,8 +12,7 @@ import 'rxjs/add/operator/catch'
 export class DomainListService {
     constructor(private http: Http) { }
 
-    private domainUrl = './rs/domain/list';  // URL to web api
-    //let AUTH = "";
+    private domainUrl = './rs/domain/list';  
     getDomainList(): Observable<Domain[]> {
         let creds = new Credentials();
         let body = JSON.stringify("{}");

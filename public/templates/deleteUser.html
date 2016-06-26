@@ -1,0 +1,16 @@
+<div class="container">   
+    <div  *ngIf="active"  class="domain-warning-wrapper">
+        <div class="domain-warning-label">Deleting User</div>
+        <div class="domain-warning-text-label"><b>Username:</b> {{user.username}}</div>
+        <div class="domain-warning-text-label"><b>First Name:</b> {{user.firstName}}</div>
+        <div class="domain-warning-text-label"><b>Last Name:</b> {{user.lastName}}</div>
+        <div class="domain-delete-button-group-wrapper">
+            <div class="domain-delete-button-wrapper-l">
+                <button class="btn btn-danger" (click)="onDeleteClicked()">Delete!</button>
+            </div>
+            <div class="domain-delete-button-wrapper-r">
+                <button class="btn btn-primary" (click)="onCancelClicked()">Cancel!</button>
+            </div>
+        </div>
+    </div>
+</div>

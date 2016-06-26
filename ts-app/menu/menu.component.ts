@@ -22,13 +22,8 @@ export class MenuComponent implements OnInit {
 
     constructor(
         private _creds: Credentials,
-        private _menuService: MenuService//,
-        //private _cd: ChangeDetectorRef
+        private _menuService: MenuService        
     ) { };
-
-   // ngOnInit() {
-        //this._cd.markForCheck();
-    //}
 
     getTitle() {
         return this.title;
@@ -83,8 +78,7 @@ export class MenuComponent implements OnInit {
             this.domainActive = false;
         } else if (this.addActive !== "active" && this.usersActive !== "active") {
             this.domainActive = true;
-        }
-        //this._cd.detectChanges();
+        }       
     }
     
 }

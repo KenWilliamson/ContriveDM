@@ -5,9 +5,11 @@ import {MenuService}   from './menu/services/menu-service';
 import {DomainListComponent}   from './domains/domain-list.component';
 import {UserListComponent}   from './users/user-list.component';
 import {AddDomainComponent}   from './addDomain/add-domain.component';
+import {AddUserComponent}   from './addUser/add-user.component';
 import {EditDomainComponent}   from './editDomain/edit-domain.component';
 import {EditUserComponent}   from './editUser/edit-user.component';
 import {DeleteDomainComponent}   from './deleteDomain/delete-domain.component';
+import {DeleteUserComponent}   from './deleteUser/delete-user.component';
 import {LoginComponent}   from './login/login.component';
 import {LogoutComponent}   from './logout/logout.component';
 import {MenuComponent}   from './menu/menu.component';
@@ -56,15 +58,21 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-
         name: 'Users',
         component: UserListComponent
     },
-   // {
-     //   path: '/adduser',
-       // name: 'AddUser',
-       // component: AddUserComponent
-    //},
+    {
+        path: '/adduser',
+        name: 'AddUser',
+        component: AddUserComponent
+    },
     {
         path: '/editUser/:id',
         name: 'EditUser',
         component: EditUserComponent
+    },
+    ,
+    {
+        path: '/deleteUser/:id',
+        name: 'DeleteUser',
+        component: DeleteUserComponent
     },
     {
         path: '/login',

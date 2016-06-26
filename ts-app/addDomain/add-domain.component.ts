@@ -8,7 +8,7 @@ import {Router, ROUTER_DIRECTIVES, RouteParams } from '@angular/router-deprecate
 
 @Component({
     selector: 'domain-add',
-    templateUrl: "../templates/add-domain.html",
+    templateUrl: "../templates/addDomain.html",
 
     directives: [
         ROUTER_DIRECTIVES
