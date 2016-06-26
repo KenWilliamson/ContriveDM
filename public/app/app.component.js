@@ -1,4 +1,4 @@
-System.register(['@angular/core', './business/credentials/credentials', './menu/menu.component', './menu/services/menu-service', './domains/domain-list.component', './users/user-list.component', './addDomain/add-domain.component', './editDomain/edit-domain.component', './deleteDomain/delete-domain.component', './login/login.component', './logout/logout.component', '@angular/router-deprecated'], function(exports_1) {
+System.register(['@angular/core', './business/credentials/credentials', './menu/menu.component', './menu/services/menu-service', './domains/domain-list.component', './users/user-list.component', './addDomain/add-domain.component', './editDomain/edit-domain.component', './editUser/edit-user.component', './deleteDomain/delete-domain.component', './login/login.component', './logout/logout.component', '@angular/router-deprecated'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['@angular/core', './business/credentials/credentials', './menu/
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, credentials_1, menu_component_1, menu_service_1, domain_list_component_1, user_list_component_1, add_domain_component_1, edit_domain_component_1, delete_domain_component_1, login_component_1, logout_component_1, router_deprecated_1;
+    var core_1, credentials_1, menu_component_1, menu_service_1, domain_list_component_1, user_list_component_1, add_domain_component_1, edit_domain_component_1, edit_user_component_1, delete_domain_component_1, login_component_1, logout_component_1, router_deprecated_1;
     var AppComponent;
     return {
         setters:[
@@ -35,6 +35,9 @@ System.register(['@angular/core', './business/credentials/credentials', './menu/
             },
             function (edit_domain_component_1_1) {
                 edit_domain_component_1 = edit_domain_component_1_1;
+            },
+            function (edit_user_component_1_1) {
+                edit_user_component_1 = edit_user_component_1_1;
             },
             function (delete_domain_component_1_1) {
                 delete_domain_component_1 = delete_domain_component_1_1;
@@ -98,6 +101,11 @@ System.register(['@angular/core', './business/credentials/credentials', './menu/
                             path: '/users',
                             name: 'Users',
                             component: user_list_component_1.UserListComponent
+                        },
+                        {
+                            path: '/editUser/:id',
+                            name: 'EditUser',
+                            component: edit_user_component_1.EditUserComponent
                         },
                         {
                             path: '/login',

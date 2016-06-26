@@ -96,7 +96,7 @@ exports.getUser = function (id, callback) {
                 callback({});
             } else if (results) {
                 var u = {};
-                u.id = results._id;
+                u._id = results._id;
                 u.username = results.username;
                 u.firstName = results.firstName;
                 u.lastName = results.lastName;
@@ -153,8 +153,8 @@ exports.userList = function (callback) {
             if (results) {
                 for (var cnt = 0; cnt < results.length; cnt++) {
                     var u = {};
-                    u.id = results[cnt]._id;
-                    u.userName = results[cnt].username;
+                    u._id = results[cnt]._id;
+                    u.username = results[cnt].username;
                     u.firstName = results[cnt].firstName;
                     u.lastName = results[cnt].lastName;
                     returnVal.push(u);

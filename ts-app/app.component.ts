@@ -6,6 +6,7 @@ import {DomainListComponent}   from './domains/domain-list.component';
 import {UserListComponent}   from './users/user-list.component';
 import {AddDomainComponent}   from './addDomain/add-domain.component';
 import {EditDomainComponent}   from './editDomain/edit-domain.component';
+import {EditUserComponent}   from './editUser/edit-user.component';
 import {DeleteDomainComponent}   from './deleteDomain/delete-domain.component';
 import {LoginComponent}   from './login/login.component';
 import {LogoutComponent}   from './logout/logout.component';
@@ -60,11 +61,11 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-
        // name: 'AddUser',
        // component: AddUserComponent
     //},
-    //{
-      //  path: '/editUser/:id',
-        //name: 'EditUser',
-       // component: EditUserComponent
-    //}
+    {
+        path: '/editUser/:id',
+        name: 'EditUser',
+        component: EditUserComponent
+    },
     {
         path: '/login',
         name: 'Login',
