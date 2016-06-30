@@ -1,0 +1,15 @@
+<div class="container">   
+    <div class="domain-warning-wrapper">
+        <div class="domain-form-error-label">{{errorMessage}}</div>
+        <div class="domain-warning-label">Push Domains</div>
+        <div class="domain-warning-text-label">Push all Domains</div>          
+        <div class="domain-delete-button-group-wrapper">
+            <div class="domain-delete-button-wrapper-l">
+                <button class="btn btn-danger" (click)="onPushClicked()">Push!</button>
+            </div>
+            <div class="domain-delete-button-wrapper-r">
+                <button class="btn btn-primary" (click)="onCancelClicked()">Cancel!</button>
+            </div>
+        </div>
+    </div>
+</div>

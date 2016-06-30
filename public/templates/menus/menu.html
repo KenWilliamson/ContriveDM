@@ -15,8 +15,14 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="{{addActive}}"><a (click)="setAddActive()" [routerLink]="['AddDomain']" >Add</a></li>                
+            <ul class="nav navbar-nav">                
+                <li class="dropdown  {{addActive}}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Domain <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a (click)="setAddActive()" [routerLink]="['AddDomain']">Add</a></li>
+                        <li><a (click)="setAddActive()" [routerLink]="['PushDomains']">Push</a></li>                        
+                    </ul>
+                </li>
                 <li class="dropdown  {{usersActive}}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
                     <ul class="dropdown-menu">
